@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 *,
 *::before,
@@ -8,8 +10,6 @@
 	border: 0;
 	box-sizing: border-box;
 }
-
-
 
 a {
 	text-decoration: none;
@@ -58,31 +58,4 @@ button {
 
 #root {
 	height: 100%;
-}
-
-/* WebKit (Chrome, Safari, Edge) */
-::-webkit-scrollbar {
-	width: 6px;
-}
-
-::-webkit-scrollbar-track {
-	box-shadow: inset 0 0 5px rgba(63, 67, 80, 0.2);
-	border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-	background-color: rgba(63, 67, 80, 0.24);
-	border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-	background-color: rgba(63, 67, 80, 0.34);
-}
-
-/* Firefox */
-@-moz-document url-prefix() {
-	* {
-		scrollbar-width: thin;
-		scrollbar-color: rgba(63, 67, 80, 0.24) transparent;
-	}
 }
