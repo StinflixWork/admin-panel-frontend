@@ -8,23 +8,13 @@ export default defineConfig(({ mode }) => {
 	return {
 		plugins: [react()],
 		define: {
-			__API__: JSON.stringify('/api')
+			__API__: JSON.stringify(env.VITE_API_URL)
 		},
 		resolve: {
 			alias: {
 				'@': path.resolve(process.cwd(), 'src'),
 				'@icons': path.resolve(process.cwd(), 'src/shared/assets/icons'),
 				'@images': path.resolve(process.cwd(), 'src/shared/assets/images')
-			}
-		},
-		server: {
-			proxy: {
-				'/api': {
-					target: env.VITE_API_URL,
-					changeOrigin: true,
-					secure: true,
-					rewrite: path => path.replace(/^\/api/, '')
-				}
 			}
 		}
 	}
