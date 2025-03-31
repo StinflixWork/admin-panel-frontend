@@ -1,0 +1,16 @@
+.root {
+  @apply rounded-lg bg-white flex flex-col justify-center gap-y-12 px-6 py-8;
+  width: 480px;
+
+  .headline {
+    @apply text-3xl font-semibold text-gray-dark text-center;
+  }
+
+  .form {
+    @apply flex flex-col gap-y-8;
+
+    .wrapperFields {
+      @apply flex flex-col gap-y-6;
+    }
+  }
+}
