@@ -6,7 +6,7 @@ const adminApi = api.injectEndpoints({
 	endpoints: build => ({
 		getSession: build.mutation<IAdminSessionResponse, IAdminCredentials>({
 			query: adminCredentials => ({
-				url: 'auth/sign-in',
+				url: '/auth/sign-in',
 				method: 'POST',
 				body: adminCredentials
 			}),
