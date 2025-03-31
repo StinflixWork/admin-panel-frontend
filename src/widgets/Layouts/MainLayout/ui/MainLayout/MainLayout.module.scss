@@ -1,0 +1,11 @@
+.root {
+  @apply flex;
+
+  .sidebar {
+    @apply basis-1/4 bg-gray-secondary;
+  }
+
+  .content {
+    @apply flex-auto overflow-x-hidden;
+  }
+}
