@@ -1,10 +1,11 @@
 import { PropsWithChildren } from 'react'
+import { Sidebar } from '@/widgets/Sidebar'
 import styles from './MainLayout.module.scss'
 
 export const MainLayout = ({ children }: PropsWithChildren) => {
 	return (
 		<div className={styles.root}>
-			<aside className={styles.sidebar}>Menu</aside>
+			<Sidebar />
 			<main className={styles.content}>{children}</main>
 		</div>
 	)

@@ -1,0 +1,15 @@
+.root {
+  @apply w-sidebar h-full flex flex-col gap-y-6 bg-white py-8 px-3;
+
+  .logo {
+    @apply text-3xl font-semibold text-center;
+  }
+
+  .menu {
+    @apply h-full flex flex-col;
+
+    .list {
+      @apply flex-auto flex flex-col gap-y-3;
+    }
+  }
+}

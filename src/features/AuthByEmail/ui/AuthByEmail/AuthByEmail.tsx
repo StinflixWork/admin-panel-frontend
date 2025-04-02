@@ -1,7 +1,7 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { useGetSessionMutation } from '@/entities/Admin/api/adminApi.ts'
-import { adminActions } from '@/entities/Admin/model/adminSlice.ts'
+import { adminActions, useGetSessionMutation } from '@/entities/Admin'
 import { useAppDispatch } from '@/shared/libs/hooks/useStore.ts'
+import { LocalStorageService } from '@/shared/services/localStorageService.ts'
 import { PasswordField } from '@/shared/ui/Fields'
 import { Button } from '@heroui/button'
 import { Checkbox } from '@heroui/checkbox'
@@ -30,8 +30,7 @@ export const AuthByEmail = () => {
 
 			if (response) {
 				const accessToken = `${response.token_type} ${response.access_token}`
-
-				localStorage.setItem('access_token', accessToken)
+				LocalStorageService.setItem('access_token', accessToken)
 				dispatch(adminActions.setIsAuth(true))
 			}
 		} catch (e) {

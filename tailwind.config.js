@@ -27,6 +27,9 @@ export default {
 				green: {
 					basic: '#0fd717'
 				}
+			},
+			width: {
+				sidebar: '280px'
 			}
 		}
 	},
