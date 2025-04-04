@@ -1,10 +1,11 @@
 import { RouteProps } from 'react-router'
+import { ClientsPage } from '@/pages'
 import { AuthPage } from '@/pages/AuthPage'
 import { DashboardPage } from '@/pages/DashboardPage/ui/DashboardPage'
 import { AppRoutes } from '@/shared/constants/routes'
 
 export type TypeRouteConfig = RouteProps & {
-	auth?: boolean
+	isAuth?: boolean
 }
 
 export const routeConfig: TypeRouteConfig[] = [
@@ -15,6 +16,11 @@ export const routeConfig: TypeRouteConfig[] = [
 	{
 		path: AppRoutes.MAIN,
 		element: <DashboardPage />,
-		auth: true
+		isAuth: true
+	},
+	{
+		path: AppRoutes.CLIENTS,
+		element: <ClientsPage />,
+		isAuth: true
 	}
 ]

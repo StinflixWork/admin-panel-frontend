@@ -26,7 +26,7 @@ export const RouterProvider = () => {
 			<Route
 				key={route.path}
 				path={route.path}
-				element={route.auth ? <RequireAuth>{element}</RequireAuth> : element}
+				element={route.isAuth ? <RequireAuth>{element}</RequireAuth> : element}
 			/>
 		)
 	}, [])

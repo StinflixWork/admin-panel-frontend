@@ -1,11 +1,7 @@
 .root {
-  @apply flex;
-
-  .sidebar {
-    @apply basis-1/4 bg-gray-secondary;
-  }
+  @apply flex h-screen;
 
   .content {
-    @apply flex-auto overflow-x-hidden;
+    @apply flex-auto overflow-x-hidden px-4 py-6;
   }
 }
