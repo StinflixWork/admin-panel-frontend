@@ -15,17 +15,12 @@ export default {
 			colors: {
 				primary: '#2891f2',
 				gray: {
-					basic: '#8e8e93',
-					secondary: '#c7c7cc',
 					state: '#d3e5f5',
 					light: '#f2f2f7',
 					dark: '#1c1c1e'
 				},
 				red: {
 					basic: '#ef1111'
-				},
-				green: {
-					basic: '#0fd717'
 				}
 			},
 			width: {

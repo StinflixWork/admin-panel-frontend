@@ -1,9 +1,12 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { adminActions, useGetSessionMutation } from '@/entities/Admin'
 import { useAppDispatch } from '@/shared/libs/hooks/useStore.ts'
-import { LocalStorageService } from '@/shared/services/localStorageService.ts'
+import {
+	LocalStorageKeys,
+	LocalStorageService
+} from '@/shared/services/localStorageService.ts'
+import { AppButton } from '@/shared/ui/AppButton'
 import { PasswordField } from '@/shared/ui/Fields'
-import { Button } from '@heroui/button'
 import { Checkbox } from '@heroui/checkbox'
 import { Input } from '@heroui/input'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -30,7 +33,7 @@ export const AuthByEmail = () => {
 
 			if (response) {
 				const accessToken = `${response.token_type} ${response.access_token}`
-				LocalStorageService.setItem('access_token', accessToken)
+				LocalStorageService.setItem(LocalStorageKeys.ACCESS_TOKEN, accessToken)
 				dispatch(adminActions.setIsAuth(true))
 			}
 		} catch (e) {
@@ -57,9 +60,7 @@ export const AuthByEmail = () => {
 					/>
 					<Checkbox {...register('rememberMe')}>Запам'ятати мене</Checkbox>
 				</div>
-				<Button color='primary' radius='sm' type='submit'>
-					Увійти
-				</Button>
+				<AppButton type='submit'>Увійти</AppButton>
 			</form>
 		</div>
 	)

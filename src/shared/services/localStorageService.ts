@@ -1,15 +1,20 @@
-type LocalStorageKeys = 'access_token'
+export const LocalStorageKeys = {
+	ACCESS_TOKEN: 'access_token'
+} as const
+
+type TypeLocalStorageKeys =
+	(typeof LocalStorageKeys)[keyof typeof LocalStorageKeys]
 
 export class LocalStorageService {
-	static getItem(key: LocalStorageKeys): string | null {
+	static getItem(key: TypeLocalStorageKeys): string | null {
 		return localStorage.getItem(key)
 	}
 
-	static setItem(key: LocalStorageKeys, value: string): void {
+	static setItem(key: TypeLocalStorageKeys, value: string): void {
 		localStorage.setItem(key, value)
 	}
 
-	static removeItem(key: LocalStorageKeys): void {
+	static removeItem(key: TypeLocalStorageKeys): void {
 		localStorage.removeItem(key)
 	}
 

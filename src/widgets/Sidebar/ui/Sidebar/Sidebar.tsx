@@ -1,5 +1,5 @@
+import { Logout } from '@/features/Logout'
 import { MENU_ITEMS } from '@/widgets/Sidebar/config/menu.ts'
-import { Button } from '@heroui/button'
 import { SidebarItem } from '../SidebarItem'
 import styles from './Sidebar.module.scss'
 
@@ -15,7 +15,7 @@ export const Sidebar = () => {
 						</li>
 					))}
 				</ul>
-				<Button color='danger'>Вихід</Button>
+				<Logout />
 			</nav>
 		</div>
 	)

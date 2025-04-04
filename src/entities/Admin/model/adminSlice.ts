@@ -9,6 +9,10 @@ const adminSlice = createSlice({
 	reducers: {
 		setIsAuth: (state, action: PayloadAction<boolean>) => {
 			state.isAuth = action.payload
+		},
+		logout: state => {
+			state.isAuth = false
+			state.admin = null
 		}
 	}
 })
