@@ -1,9 +1,5 @@
 import styles from './Table.module.scss'
 
-interface TableProps {
-	className?: string
-}
-
-export const Table = (props: TableProps) => {
+export const Table = () => {
 	return <div className={styles.root}></div>
 }
