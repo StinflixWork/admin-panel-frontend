@@ -16,3 +16,9 @@ type TypeApiPagination = {
 	limit: number
 	total: number
 }
+
+export interface IAccessTokenResource {
+	access_token: string
+	token_type: string
+	expires_in: number
+}

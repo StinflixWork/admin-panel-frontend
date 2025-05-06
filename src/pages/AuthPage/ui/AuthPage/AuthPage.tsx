@@ -5,7 +5,7 @@ import { useAppSelector } from '@/shared/libs/hooks/useStore.ts'
 import styles from './AuthPage.module.scss'
 
 const AuthPage = () => {
-	const isAuth = useAppSelector(({ admin }) => admin.isAuth)
+	const isAuth = useAppSelector(({ admin }) => admin.accessToken)
 
 	if (isAuth) {
 		return <Navigate to={AppRoutes.MAIN} replace />

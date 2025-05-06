@@ -1,5 +1,10 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { adminActions, useGetSessionMutation } from '@/entities/Admin'
+import { useNavigate } from 'react-router'
+import { Checkbox } from '@heroui/checkbox'
+import { Input } from '@heroui/input'
+import { addToast } from '@heroui/toast'
+import { adminActions, useLoginMutation } from '@/entities/Admin'
+import { AppRoutes } from '@/shared/constants/routes'
 import { useAppDispatch } from '@/shared/libs/hooks/useStore.ts'
 import {
 	LocalStorageKeys,
@@ -7,37 +12,50 @@ import {
 } from '@/shared/services/localStorageService.ts'
 import { AppButton } from '@/shared/ui/AppButton'
 import { PasswordField } from '@/shared/ui/Fields'
-import { Checkbox } from '@heroui/checkbox'
-import { Input } from '@heroui/input'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { defaultAuthValues } from '../../config/defaultAuthValues.ts'
 import { validationAuthValues } from '../../config/validationAuthValues.ts'
 import { IAuthFormValues } from '../../types/authFormValues.ts'
 import styles from './AuthByEmail.module.scss'
 
+// Додати вивід помилок під інпути
+// Винести інпути в шерід
 export const AuthByEmail = () => {
 	const { register, handleSubmit } = useForm<IAuthFormValues>({
 		defaultValues: defaultAuthValues,
 		resolver: yupResolver(validationAuthValues)
 	})
 
-	const [getSession] = useGetSessionMutation()
+	const [login] = useLoginMutation()
 	const dispatch = useAppDispatch()
+	const navigate = useNavigate()
 
-	const onSubmit: SubmitHandler<IAuthFormValues> = async data => {
+	const onSubmit: SubmitHandler<IAuthFormValues> = async authCredentials => {
 		try {
-			const response = await getSession({
-				email: data.email,
-				password: data.password
+			const { email, password, rememberMe } = authCredentials
+			const { token_type, access_token } = await login({
+				email,
+				password
 			}).unwrap()
 
-			if (response) {
-				const accessToken = `${response.token_type} ${response.access_token}`
-				LocalStorageService.setItem(LocalStorageKeys.ACCESS_TOKEN, accessToken)
-				dispatch(adminActions.setIsAuth(true))
+			const accessToken = `${token_type} ${access_token}`
+			dispatch(adminActions.setAccessToken(accessToken))
+
+			if (rememberMe) {
+				LocalStorageService.setItem(
+					LocalStorageKeys.REMEMBER_ME,
+					JSON.stringify(authCredentials.rememberMe)
+				)
 			}
+
+			navigate(AppRoutes.MAIN, { replace: true })
 		} catch (e) {
-			console.error('@authByEmail', e)
+			console.error(e)
+			addToast({
+				title: 'Перевірьте будь-ласка правильність вхідних даних',
+				variant: 'solid',
+				color: 'danger'
+			})
 		}
 	}
 
