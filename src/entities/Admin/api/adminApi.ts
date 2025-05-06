@@ -1,6 +1,6 @@
 import { api } from '@/shared/api/api.ts'
 import { GET_ADMIN } from '@/shared/api/tags.ts'
-import { IAccessTokenResource } from '@/shared/types/common.ts'
+import { IAccessTokenResource, IApiResponse } from '@/shared/types/common.ts'
 import { IAdminCredentials, IAdminSessionResponse } from './adminTypes.ts'
 
 const adminApi = api.injectEndpoints({
@@ -13,6 +13,12 @@ const adminApi = api.injectEndpoints({
 			}),
 			invalidatesTags: [GET_ADMIN]
 		}),
+		logout: build.mutation<IApiResponse, void>({
+			query: () => ({
+				url: '/auth/logout',
+				method: 'POST'
+			})
+		}),
 		getSession: build.query<IAdminSessionResponse, void>({
 			query: () => '/session',
 			providesTags: [GET_ADMIN]
@@ -20,4 +26,4 @@ const adminApi = api.injectEndpoints({
 	})
 })
 
-export const { useLoginMutation, useGetSessionQuery } = adminApi
+export const { useLoginMutation, useLogoutMutation, useGetSessionQuery } = adminApi
