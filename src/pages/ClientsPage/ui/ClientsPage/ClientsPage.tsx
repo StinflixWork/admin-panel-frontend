@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useGetClientsQuery } from '@/entities/Client'
+import { AppLoader } from '@/shared/ui/AppLoader'
 import { Table } from '@/shared/ui/Table'
 import { clientsColumns } from '../../config/clientsColumns.tsx'
 import styles from './ClientsPage.module.scss'
@@ -9,7 +10,7 @@ const ClientsPage = () => {
 	const { data, isLoading } = useGetClientsQuery(pagination)
 
 	if (isLoading) {
-		return <div>Загрузка</div>
+		return <AppLoader />
 	}
 
 	return (
