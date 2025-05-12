@@ -8,7 +8,7 @@ export interface IApiResponseWithMeta<TData> {
 	meta: TypeApiPagination
 }
 
-type TypeApiPagination = {
+export type TypeApiPagination = {
 	page: {
 		current: number
 		total: number
