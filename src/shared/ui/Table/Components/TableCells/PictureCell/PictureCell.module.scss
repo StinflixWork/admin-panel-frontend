@@ -1,0 +1,7 @@
+.root {
+  @apply w-20 h-20 rounded overflow-hidden;
+
+  > img {
+    @apply w-full h-full object-cover;
+  }
+}

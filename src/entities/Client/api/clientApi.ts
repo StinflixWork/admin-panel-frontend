@@ -1,12 +1,16 @@
 import { api } from '@/shared/api/api.ts'
 import { GET_CLIENT, GET_CLIENTS } from '@/shared/api/tags.ts'
 import { IApiResponse, IApiResponseWithMeta } from '@/shared/types/common.ts'
+import { PaginationState } from '@tanstack/react-table'
 import { IClientResource } from './clientTypes.ts'
 
 const clientApi = api.injectEndpoints({
 	endpoints: build => ({
-		getClients: build.query<IApiResponseWithMeta<IClientResource>, void>({
-			query: () => '/clients',
+		getClients: build.query<IApiResponseWithMeta<IClientResource>, PaginationState>({
+			query: ({ pageIndex, pageSize }) => ({
+				url: '/clients',
+				params: { page: pageIndex, limit: pageSize }
+			}),
 			providesTags: [GET_CLIENTS]
 		}),
 		getClientById: build.query<IClientResource, string>({
@@ -23,10 +27,7 @@ const clientApi = api.injectEndpoints({
 			}),
 			invalidatesTags: [GET_CLIENTS]
 		}),
-		updateClientById: build.mutation<
-			IApiResponse,
-			{ clientId: string; formData: FormData }
-		>({
+		updateClientById: build.mutation<IApiResponse, { clientId: string; formData: FormData }>({
 			query: ({ clientId, formData }) => ({
 				url: `/clients/${clientId}`,
 				method: 'PUT',
@@ -41,10 +42,7 @@ const clientApi = api.injectEndpoints({
 			}),
 			invalidatesTags: [GET_CLIENT, GET_CLIENTS]
 		}),
-		generateClientApiToken: build.mutation<
-			IApiResponse,
-			{ client_identifier: string }
-		>({
+		generateClientApiToken: build.mutation<IApiResponse, { client_identifier: string }>({
 			query: ({ client_identifier }) => ({
 				url: '/clients/generate-token',
 				method: 'POST',

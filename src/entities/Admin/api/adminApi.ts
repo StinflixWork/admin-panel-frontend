@@ -16,7 +16,8 @@ const adminApi = api.injectEndpoints({
 		logout: build.mutation<IApiResponse, void>({
 			query: () => ({
 				url: '/auth/logout',
-				method: 'POST'
+				method: 'POST',
+				credentials: 'include'
 			})
 		}),
 		getSession: build.query<IAdminSessionResponse, void>({
