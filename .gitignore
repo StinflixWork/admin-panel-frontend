@@ -10,3 +10,5 @@ package-lock.json
 
 # Editor directories and files
 .idea
+
+.env
