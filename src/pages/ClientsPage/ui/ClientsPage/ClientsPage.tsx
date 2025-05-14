@@ -13,19 +13,18 @@ const ClientsPage = () => {
 		return <AppLoader />
 	}
 
+	// зробити контейнер для секкції, і зробити контейнер для шапки
 	return (
 		<section className={styles.root}>
 			<div>
-				<h2>Клієнти</h2>
+				<h2 className='text-3xl font-semibold text-gray-dark'>Клієнти</h2>
 			</div>
-			<div>
-				<Table
-					tableData={data}
-					columns={clientsColumns}
-					pagination={pagination}
-					setPagination={setPagination}
-				/>
-			</div>
+			<Table
+				tableData={data}
+				columns={clientsColumns}
+				pagination={pagination}
+				setPagination={setPagination}
+			/>
 		</section>
 	)
 }

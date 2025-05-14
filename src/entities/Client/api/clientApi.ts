@@ -13,8 +13,8 @@ const clientApi = api.injectEndpoints({
 			}),
 			providesTags: [GET_CLIENTS]
 		}),
-		getClientById: build.query<IClientResource, string>({
-			query: clientId => ({
+		getClientById: build.query<IClientResource, { clientId: string }>({
+			query: ({ clientId }) => ({
 				url: `/clients/${clientId}`
 			}),
 			providesTags: [GET_CLIENT]
