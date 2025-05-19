@@ -30,7 +30,7 @@ const clientApi = api.injectEndpoints({
 		updateClientById: build.mutation<IApiResponse, { clientId: string; formData: FormData }>({
 			query: ({ clientId, formData }) => ({
 				url: `/clients/${clientId}`,
-				method: 'PUT',
+				method: 'POST',
 				body: formData
 			}),
 			invalidatesTags: [GET_CLIENT, GET_CLIENTS]

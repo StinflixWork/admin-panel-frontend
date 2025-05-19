@@ -6,11 +6,13 @@ import { Eye, EyeOff } from 'lucide-react'
 interface PasswordFieldProps<T extends FieldValues> {
 	label: Path<T>
 	register: UseFormRegister<T>
+	isRequired?: boolean
 }
 
 export const PasswordField = <TData extends FieldValues>({
 	register,
-	label
+	label,
+	isRequired = false
 }: PasswordFieldProps<TData>) => {
 	const [isVisible, setIsVisible] = useState(false)
 	const toggleVisibility = () => setIsVisible(!isVisible)
@@ -22,14 +24,11 @@ export const PasswordField = <TData extends FieldValues>({
 			labelPlacement='outside'
 			radius='sm'
 			type={isVisible ? 'text' : 'password'}
-			isRequired
+			isRequired={isRequired}
+			autoComplete='new-password'
 			{...register(label)}
 			endContent={
-				<button
-					aria-label='toggle password visibility'
-					type='button'
-					onClick={toggleVisibility}
-				>
+				<button aria-label='toggle password visibility' type='button' onClick={toggleVisibility}>
 					{isVisible ? (
 						<EyeOff className='w-6 text-gray-dark' />
 					) : (

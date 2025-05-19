@@ -1,7 +1,9 @@
 export interface IClientResource {
 	id: string
 	name: string
+	identifier: string
 	picture: string | null
+	active: boolean
 	connection: IClientConnectionResource
 }
 

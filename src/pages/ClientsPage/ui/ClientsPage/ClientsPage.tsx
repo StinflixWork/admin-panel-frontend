@@ -6,7 +6,7 @@ import { clientsColumns } from '../../config/clientsColumns.tsx'
 import styles from './ClientsPage.module.scss'
 
 const ClientsPage = () => {
-	const [pagination, setPagination] = useState({ pageIndex: 1, pageSize: 1 })
+	const [pagination, setPagination] = useState({ pageIndex: 1, pageSize: 10 })
 	const { data, isLoading } = useGetClientsQuery(pagination)
 
 	if (isLoading) {

@@ -40,7 +40,7 @@ export const Table = <T,>(props: TableProps<T>) => {
 			</table>
 			{tableData && (
 				<TableFooter
-					total={tableData.meta.total}
+					total={tableData.meta.page.total}
 					pagination={pagination}
 					setPagination={setPagination}
 				/>

@@ -1,4 +1,4 @@
-import ImagePlaceholder from '@images/image-placeholder.webp'
+import ImagePlaceholder from '@images/image-placeholder.png'
 import styles from './PictureCell.module.scss'
 
 interface PictureCellProps {
