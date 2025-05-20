@@ -1,11 +1,12 @@
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Input } from '@heroui/input'
 import { useUpdateClientByIdMutation } from '@/entities/Client'
 import { IClientResource } from '@/entities/Client/api/clientTypes.ts'
 import { clientDto } from '@/pages/ClientsPage/config/clientDto.ts'
 import { ClientFormFieldsType } from '@/pages/ClientsPage/types/clientFormFields.ts'
 import { AppButton, ButtonVariants } from '@/shared/ui/AppButton'
-import { PasswordField } from '@/shared/ui/Fields'
+import { AppDropzone } from '@/shared/ui/AppDropzone'
+import { PasswordField, TextField } from '@/shared/ui/Fields'
 import styles from './ClientModalEdit.module.scss'
 
 interface ClientModalEditProps {
@@ -14,6 +15,8 @@ interface ClientModalEditProps {
 }
 
 export const ClientModalEdit = ({ data, onClickEdit }: ClientModalEditProps) => {
+	const [files, setFiles] = useState<File[] | null>(null)
+
 	const clientData = clientDto(data)
 
 	const { handleSubmit, register } = useForm<ClientFormFieldsType>({ defaultValues: clientData })
@@ -29,6 +32,10 @@ export const ClientModalEdit = ({ data, onClickEdit }: ClientModalEditProps) => 
 				fd.append(field, String(value))
 			})
 
+			if (files) {
+				fd.append('picture', files[0])
+			}
+
 			fd.append('_method', 'put')
 
 			await updateClientById({ clientId: data.id, formData: fd }).unwrap()
@@ -40,50 +47,34 @@ export const ClientModalEdit = ({ data, onClickEdit }: ClientModalEditProps) => 
 	return (
 		<form className={styles.root} onSubmit={handleSubmit(onSubmit)}>
 			<div className={styles.fields}>
-				<Input
+				<AppDropzone setFileList={setFiles} fileList={files} initialPreviewPicture={data.picture}>
+					<div className='text-sm text-center px-5 py-20'>
+						<p>Натисніть щоб завантажити</p>
+						<p>або перетягніть</p>
+						<p>JPG, PNG до 5 мб</p>
+					</div>
+				</AppDropzone>
+				<TextField
 					label='Назва CRM системи'
-					labelPlacement='outside'
 					placeholder='Введіть назву системи'
 					{...register('client_name')}
 				/>
-				<Input
+				<TextField
 					label='Ідентифікатор'
-					labelPlacement='outside'
 					placeholder='Введіть ідентифікатор клієнта'
 					{...register('client_identifier')}
 				/>
-				<Input
+				<TextField
 					label='Username'
-					labelPlacement='outside'
 					placeholder='Введіть назву системи'
 					{...register('username')}
 					autoComplete='new-username'
 				/>
 				<PasswordField<ClientFormFieldsType> label='password' register={register} />
-				<Input
-					label='СУБД'
-					labelPlacement='outside'
-					placeholder='Введіть субд'
-					{...register('connection')}
-				/>
-				<Input
-					label='База даних'
-					labelPlacement='outside'
-					placeholder='Введіть назву БД'
-					{...register('database')}
-				/>
-				<Input
-					label='Хост'
-					labelPlacement='outside'
-					placeholder='Введіть хост'
-					{...register('host')}
-				/>
-				<Input
-					label='Порт'
-					labelPlacement='outside'
-					placeholder='Введіть порт'
-					{...register('port')}
-				/>
+				<TextField label='СУБД' placeholder='Введіть субд' {...register('connection')} />
+				<TextField label='База даних' placeholder='Введіть назву БД' {...register('database')} />
+				<TextField label='Хост' placeholder='Введіть хост' {...register('host')} />
+				<TextField label='Порт' placeholder='Введіть порт' {...register('port')} />
 			</div>
 			<div className={styles.actions}>
 				<AppButton
