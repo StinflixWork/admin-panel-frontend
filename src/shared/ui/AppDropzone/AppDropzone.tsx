@@ -1,48 +1,37 @@
-import { ReactElement, useCallback, useEffect, useState } from 'react'
-import { useDropzone } from 'react-dropzone'
+import { ReactElement, useCallback, useState } from 'react'
+import { FileWithPath, useDropzone } from 'react-dropzone'
+import { AcceptedFilesList } from './AcceptedFilesList'
 import styles from './AppDropzone.module.scss'
 
 interface DropzoneProps {
 	children: ReactElement
-	fileList: File[] | null
 	setFileList: (files: File[]) => void
-	initialPreviewPicture?: string | null
 }
 
-export const AppDropzone = ({
-	children,
-	fileList,
-	setFileList,
-	initialPreviewPicture
-}: DropzoneProps) => {
-	const [preview, setPreview] = useState<string | null>(initialPreviewPicture || null)
+export const AppDropzone = (props: DropzoneProps) => {
+	const { children, setFileList } = props
+	const [files, setFiles] = useState<FileWithPath[]>([])
 
-	const onDrop = useCallback((acceptedFiles: File[]) => {
+	const onDrop = useCallback((acceptedFiles: FileWithPath[]) => {
 		setFileList(acceptedFiles)
+		setFiles(acceptedFiles)
 	}, [])
 
-	const { getRootProps, getInputProps } = useDropzone({ onDrop })
+	const handleRemoveFile = (file: FileWithPath) => {
+		const filteredFiles = files.filter(acceptedFile => acceptedFile.name !== file.name)
+		setFiles(filteredFiles)
+		setFileList(filteredFiles)
+	}
 
-	useEffect(() => {
-		if (!fileList) return
-
-		const previewUrl = URL.createObjectURL(fileList[0])
-		setPreview(previewUrl)
-
-		return () => {
-			URL.revokeObjectURL(previewUrl)
-		}
-	}, [fileList])
+	const { getRootProps, getInputProps } = useDropzone({ onDrop, maxFiles: 1, multiple: false })
 
 	return (
-		<div {...getRootProps({ className: styles.root })}>
-			<input type='file' {...getInputProps()} />
-			{children}
-			{preview && (
-				<div className={styles.previewImage}>
-					<img src={preview} alt='preview' />
-				</div>
-			)}
+		<div className={styles.root}>
+			<div {...getRootProps({ className: styles.dropzone })}>
+				<input type='file' {...getInputProps()} />
+				{children}
+			</div>
+			<AcceptedFilesList files={files} handleRemoveFile={handleRemoveFile} />
 		</div>
 	)
 }

@@ -16,7 +16,6 @@ interface ClientModalEditProps {
 
 export const ClientModalEdit = ({ data, onClickEdit }: ClientModalEditProps) => {
 	const [files, setFiles] = useState<File[] | null>(null)
-
 	const clientData = clientDto(data)
 
 	const { handleSubmit, register } = useForm<ClientFormFieldsType>({ defaultValues: clientData })
@@ -28,17 +27,16 @@ export const ClientModalEdit = ({ data, onClickEdit }: ClientModalEditProps) => 
 		try {
 			Object.entries(formFields).forEach(([field, value]) => {
 				if (value === '' || value === null) return
-
 				fd.append(field, String(value))
 			})
 
-			if (files) {
+			if (files && files.length > 0) {
 				fd.append('picture', files[0])
 			}
 
 			fd.append('_method', 'put')
-
 			await updateClientById({ clientId: data.id, formData: fd }).unwrap()
+			onClickEdit()
 		} catch (e) {
 			console.error(e)
 		}
@@ -47,8 +45,8 @@ export const ClientModalEdit = ({ data, onClickEdit }: ClientModalEditProps) => 
 	return (
 		<form className={styles.root} onSubmit={handleSubmit(onSubmit)}>
 			<div className={styles.fields}>
-				<AppDropzone setFileList={setFiles} fileList={files} initialPreviewPicture={data.picture}>
-					<div className='text-sm text-center px-5 py-20'>
+				<AppDropzone setFileList={setFiles}>
+					<div className='text-sm text-center px-5 py-10'>
 						<p>Натисніть щоб завантажити</p>
 						<p>або перетягніть</p>
 						<p>JPG, PNG до 5 мб</p>

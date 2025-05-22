@@ -1,19 +1,23 @@
 .root {
-  @apply border-2 border-dashed border-gray-state rounded cursor-pointer relative overflow-hidden;
+  @apply flex flex-col gap-y-1.5;
 
-  &:focus {
-    @apply border-gray-basic;
-  }
+  .dropzone {
+    @apply border-2 border-dashed border-gray-state rounded cursor-pointer relative overflow-hidden;
 
-  &:has(.previewImage) {
-    @apply border-none;
-  }
+    &:focus {
+      @apply border-gray-basic;
+    }
 
-  .previewImage {
-    @apply absolute inset-0;
+    &:has(.previewImage) {
+      @apply border-none;
+    }
 
-    & > img {
-      @apply w-full h-full object-cover;
+    .previewImage {
+      @apply absolute inset-0;
+
+      & > img {
+        @apply w-full h-full object-cover;
+      }
     }
   }
 }
