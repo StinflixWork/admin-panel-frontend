@@ -1,5 +1,5 @@
 import { FileWithPath } from 'react-dropzone'
-import { AppButton } from '@/shared/ui/AppButton'
+import { Trash2 } from 'lucide-react'
 import styles from './AcceptedFilesList.module.scss'
 
 interface AcceptedFileItemProps {
@@ -11,9 +11,11 @@ export const AcceptedFilesList = ({ files, handleRemoveFile }: AcceptedFileItemP
 	return (
 		<ul className={styles.root}>
 			{files.map(file => (
-				<li key={file.path}>
+				<li key={file.path} className={styles.pictureItem}>
 					<p>{file.name}</p>
-					<AppButton onPress={() => handleRemoveFile(file)}>X</AppButton>
+					<button onClick={() => handleRemoveFile(file)} className={styles.removePictureButton}>
+						<Trash2 size={18} />
+					</button>
 				</li>
 			))}
 		</ul>

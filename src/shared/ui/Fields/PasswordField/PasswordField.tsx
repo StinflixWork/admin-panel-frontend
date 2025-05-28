@@ -1,41 +1,38 @@
 import { useState } from 'react'
-import { FieldValues, Path, UseFormRegister } from 'react-hook-form'
-import { Input } from '@heroui/input'
+import { InputProps } from '@heroui/input'
+import { TextField } from '@/shared/ui/Fields'
 import { Eye, EyeOff } from 'lucide-react'
+import styles from './PasswordField.module.scss'
 
-interface PasswordFieldProps<T extends FieldValues> {
-	label: Path<T>
-	register: UseFormRegister<T>
-	isRequired?: boolean
+interface PasswordFieldProps extends Omit<InputProps, 'label' | 'placeholder'> {
+	error?: string
 }
 
-export const PasswordField = <TData extends FieldValues>({
-	register,
-	label,
-	isRequired = false
-}: PasswordFieldProps<TData>) => {
+export const PasswordField = (props: PasswordFieldProps) => {
+	const { error, ...inputProps } = props
+
 	const [isVisible, setIsVisible] = useState(false)
 	const toggleVisibility = () => setIsVisible(!isVisible)
 
 	return (
-		<Input
-			label='Пароль'
-			placeholder='Введіть пароль'
-			labelPlacement='outside'
-			radius='sm'
-			type={isVisible ? 'text' : 'password'}
-			isRequired={isRequired}
-			autoComplete='new-password'
-			{...register(label)}
-			endContent={
-				<button aria-label='toggle password visibility' type='button' onClick={toggleVisibility}>
-					{isVisible ? (
-						<EyeOff className='w-6 text-gray-dark' />
-					) : (
-						<Eye className='w-6 text-gray-dark' />
-					)}
-				</button>
-			}
-		/>
+		<div className={styles.root}>
+			<TextField
+				label='Пароль'
+				placeholder='Введіть пароль'
+				type={isVisible ? 'text' : 'password'}
+				autoComplete='new-password'
+				endContent={
+					<button aria-label='toggle password visibility' type='button' onClick={toggleVisibility}>
+						{isVisible ? (
+							<EyeOff className={styles.hiddenIcon} />
+						) : (
+							<Eye className={styles.hiddenIcon} />
+						)}
+					</button>
+				}
+				{...inputProps}
+			/>
+			{error && <span className={styles.error}>{error}</span>}
+		</div>
 	)
 }

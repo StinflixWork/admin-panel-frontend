@@ -1,17 +1,9 @@
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
 import { useUpdateClientByIdMutation } from '@/entities/Client'
 import { IClientResource } from '@/entities/Client/api/clientTypes.ts'
-import { clientDto } from '@/pages/ClientsPage/config/clientDto.ts'
-import {
-	ClientFormFieldsType,
-	clientFormSchema
-} from '@/pages/ClientsPage/config/clientFormSchema.ts'
-import { AppButton, ButtonVariants } from '@/shared/ui/AppButton'
-import { AppDropzone } from '@/shared/ui/AppDropzone'
-import { PasswordField, TextField } from '@/shared/ui/Fields'
-import { yupResolver } from '@hookform/resolvers/yup'
-import styles from './ClientModalEdit.module.scss'
+import { ClientForm } from '@/pages/ClientsPage/components/ClientForm'
+import { ClientFormFieldsType } from '@/pages/ClientsPage/config/clientFormSchema.ts'
+import { isEmpty } from '@/shared/libs/utils/isEmpty.ts'
 
 interface ClientModalEditProps {
 	data: IClientResource
@@ -20,16 +12,7 @@ interface ClientModalEditProps {
 
 export const ClientModalEdit = ({ data, onClickEdit }: ClientModalEditProps) => {
 	const [files, setFiles] = useState<File[] | null>(null)
-	const clientData = clientDto(data)
 
-	const {
-		handleSubmit,
-		register,
-		formState: { errors }
-	} = useForm<ClientFormFieldsType>({
-		defaultValues: clientData,
-		resolver: yupResolver(clientFormSchema)
-	})
 	const [updateClientById] = useUpdateClientByIdMutation()
 
 	const onSubmit = async (formFields: ClientFormFieldsType) => {
@@ -37,7 +20,7 @@ export const ClientModalEdit = ({ data, onClickEdit }: ClientModalEditProps) => 
 
 		try {
 			Object.entries(formFields).forEach(([field, value]) => {
-				if (value === '' || value === null) return
+				if (isEmpty(value)) return
 				fd.append(field, String(value))
 			})
 
@@ -54,74 +37,11 @@ export const ClientModalEdit = ({ data, onClickEdit }: ClientModalEditProps) => 
 	}
 
 	return (
-		<form className={styles.root} onSubmit={handleSubmit(onSubmit)}>
-			<div className={styles.fields}>
-				<AppDropzone setFileList={setFiles}>
-					<div className='text-sm text-center px-5 py-10'>
-						<p>Натисніть щоб завантажити</p>
-						<p>або перетягніть</p>
-						<p>JPG, PNG до 5 мб</p>
-					</div>
-				</AppDropzone>
-				<TextField
-					label='Назва CRM системи'
-					placeholder='Введіть назву системи'
-					error={errors.client_name?.message}
-					{...register('client_name')}
-				/>
-				<TextField
-					label='Ідентифікатор'
-					placeholder='Введіть ідентифікатор клієнта'
-					{...register('client_identifier')}
-					error={errors.client_identifier?.message}
-				/>
-				<TextField
-					label='Username'
-					placeholder='Введіть назву системи'
-					autoComplete='new-username'
-					error={errors.username?.message}
-					{...register('username')}
-				/>
-				<PasswordField<ClientFormFieldsType> label='password' register={register} />
-				<TextField
-					label='СУБД'
-					placeholder='Введіть субд'
-					error={errors.connection?.message}
-					{...register('connection')}
-				/>
-				<TextField
-					label='База даних'
-					placeholder='Введіть назву БД'
-					error={errors.database?.message}
-					{...register('database')}
-				/>
-				<TextField
-					label='Хост'
-					placeholder='Введіть хост'
-					error={errors.host?.message}
-					{...register('host')}
-				/>
-				<TextField
-					label='Порт'
-					placeholder='Введіть порт'
-					error={errors.port?.message}
-					{...register('port')}
-				/>
-			</div>
-			<div className={styles.actions}>
-				<AppButton
-					onPress={onClickEdit}
-					variant={ButtonVariants.OUTLINE}
-					color='danger'
-					type='button'
-					fullWidth
-				>
-					Скасувати
-				</AppButton>
-				<AppButton type='submit' fullWidth>
-					Зберегти
-				</AppButton>
-			</div>
-		</form>
+		<ClientForm
+			onSubmit={onSubmit}
+			onCloseModal={onClickEdit}
+			setFiles={setFiles}
+			initialValues={data}
+		/>
 	)
 }

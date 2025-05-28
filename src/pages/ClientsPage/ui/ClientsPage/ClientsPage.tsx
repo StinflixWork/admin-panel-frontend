@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useGetClientsQuery } from '@/entities/Client'
 import { AppLoader } from '@/shared/ui/AppLoader'
 import { Table } from '@/shared/ui/Table'
+import { ClientCreateModal } from '../../components/ClientCreateModal'
 import { clientsColumns } from '../../config/clientsColumns.tsx'
 import styles from './ClientsPage.module.scss'
 
@@ -16,8 +17,9 @@ const ClientsPage = () => {
 	// зробити контейнер для секкції, і зробити контейнер для шапки
 	return (
 		<section className={styles.root}>
-			<div>
+			<div className={styles.header}>
 				<h2 className='text-3xl font-semibold text-gray-dark'>Клієнти</h2>
+				<ClientCreateModal />
 			</div>
 			<Table
 				tableData={data}
