@@ -1,3 +1,4 @@
+import { ClientDeleteModal } from '../ClientDeleteModal'
 import { ClientModal } from '../ClientModal'
 import styles from './ClientsTableActions.module.scss'
 
@@ -9,6 +10,7 @@ export const ClientsTableActions = ({ clientId }: ClientsTableActionsProps) => {
 	return (
 		<div className={styles.root}>
 			<ClientModal clientId={clientId} />
+			<ClientDeleteModal clientId={clientId} />
 		</div>
 	)
 }
