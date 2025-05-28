@@ -6,7 +6,8 @@ import {
 } from '@/pages/ClientsPage/config/clientFormSchema.ts'
 import { AppButton, ButtonVariants } from '@/shared/ui/AppButton'
 import { AppDropzone } from '@/shared/ui/AppDropzone'
-import { PasswordField, TextField } from '@/shared/ui/Fields'
+import { PasswordField } from '@/shared/ui/Fields/PasswordField'
+import { TextField } from '@/shared/ui/Fields/TextField'
 import { yupResolver } from '@hookform/resolvers/yup'
 import styles from './ClientCreateForm.module.scss'
 

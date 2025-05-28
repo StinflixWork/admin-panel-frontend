@@ -1,6 +1,6 @@
 import { IClientResource } from '@/entities/Client/api/clientTypes.ts'
 import { AppButton } from '@/shared/ui/AppButton'
-import { InfoField } from '@/shared/ui/Fields'
+import { InfoField } from '@/shared/ui/Fields/InfoField'
 import ImagePlaceholder from '@images/image-placeholder.png'
 import styles from './ClientModalShow.module.scss'
 

@@ -2,7 +2,8 @@ import { useForm } from 'react-hook-form'
 import { IClientResource } from '@/entities/Client/api/clientTypes.ts'
 import { AppButton, ButtonVariants } from '@/shared/ui/AppButton'
 import { AppDropzone } from '@/shared/ui/AppDropzone'
-import { PasswordField, TextField } from '@/shared/ui/Fields'
+import { PasswordField } from '@/shared/ui/Fields/PasswordField'
+import { TextField } from '@/shared/ui/Fields/TextField'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { clientDto } from '../../config/clientDto.ts'
 import { ClientFormFieldsType, clientFormSchema } from '../../config/clientFormSchema.ts'
@@ -57,7 +58,7 @@ export const ClientForm = (props: ClientFormProps) => {
 					error={errors.username?.message}
 					{...register('username')}
 				/>
-				<PasswordField<ClientFormFieldsType> label='password' register={register} />
+				<PasswordField error={errors.password?.message} {...register('password')} />
 				<TextField
 					label='СУБД'
 					placeholder='Введіть субд'

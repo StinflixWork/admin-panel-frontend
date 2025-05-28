@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { InputProps } from '@heroui/input'
-import { TextField } from '@/shared/ui/Fields'
 import { Eye, EyeOff } from 'lucide-react'
+import { TextField } from '../TextField'
 import styles from './PasswordField.module.scss'
 
 interface PasswordFieldProps extends Omit<InputProps, 'label' | 'placeholder'> {
