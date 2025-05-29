@@ -1,12 +1,13 @@
 import { AppState } from '@/app/providers/StoreProvider'
-import { LocalStorageKeys, LocalStorageService } from '@/shared/services/localStorageService.ts'
-import { IAccessTokenResource } from '@/shared/types/common.ts'
 import {
 	BaseQueryFn,
 	FetchArgs,
 	FetchBaseQueryError,
 	fetchBaseQuery
 } from '@reduxjs/toolkit/query/react'
+import { AppRoutes } from '../constants/routes/'
+import { LocalStorageKeys, LocalStorageService } from '../services/localStorageService.ts'
+import { IAccessTokenResource } from '../types/common.ts'
 
 const baseQuery = fetchBaseQuery({
 	baseUrl: __API__,
@@ -57,6 +58,7 @@ export const baseQueryWithReAuth: BaseQueryFn<
 				extraOptions
 			)
 			LocalStorageService.removeItem(LocalStorageKeys.REMEMBER_ME)
+			window.location.href = AppRoutes.AUTH
 		}
 	}
 
