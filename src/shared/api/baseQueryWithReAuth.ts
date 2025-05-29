@@ -47,6 +47,15 @@ export const baseQueryWithReAuth: BaseQueryFn<
 			result = await baseQuery(args, api, extraOptions)
 		} else {
 			api.dispatch({ type: 'admin/logout' })
+			await baseQuery(
+				{
+					url: '/auth/logout',
+					method: 'POST',
+					credentials: 'include'
+				},
+				api,
+				extraOptions
+			)
 			LocalStorageService.removeItem(LocalStorageKeys.REMEMBER_ME)
 		}
 	}

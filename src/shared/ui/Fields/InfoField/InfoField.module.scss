@@ -1,0 +1,11 @@
+.root {
+  @apply flex flex-col;
+
+  .title {
+    @apply text-base font-medium text-green-brand;
+  }
+
+  .value {
+    @apply text-lg;
+  }
+}

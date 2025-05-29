@@ -1,0 +1,23 @@
+.root {
+  @apply flex flex-col gap-y-1.5;
+
+  .dropzone {
+    @apply border-2 border-dashed border-gray-state rounded cursor-pointer relative overflow-hidden;
+
+    &:focus {
+      @apply border-gray-basic;
+    }
+
+    &:has(.previewImage) {
+      @apply border-none;
+    }
+
+    .previewImage {
+      @apply absolute inset-0;
+
+      & > img {
+        @apply w-full h-full object-cover;
+      }
+    }
+  }
+}

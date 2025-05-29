@@ -1,0 +1,11 @@
+.root {
+  @apply flex flex-col gap-y-6;
+
+  .fields {
+    @apply flex flex-col gap-y-4;
+  }
+
+  .actions {
+    @apply flex items-center gap-x-4;
+  }
+}

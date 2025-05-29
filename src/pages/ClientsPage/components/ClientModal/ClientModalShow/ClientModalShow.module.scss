@@ -1,0 +1,11 @@
+.root {
+  @apply flex flex-col gap-y-4;
+
+  .avatar {
+    @apply w-full h-[280px];
+
+    img {
+      @apply w-full h-full object-cover;
+    }
+  }
+}

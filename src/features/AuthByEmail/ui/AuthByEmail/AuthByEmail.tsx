@@ -6,12 +6,9 @@ import { addToast } from '@heroui/toast'
 import { adminActions, useLoginMutation } from '@/entities/Admin'
 import { AppRoutes } from '@/shared/constants/routes'
 import { useAppDispatch } from '@/shared/libs/hooks/useStore.ts'
-import {
-	LocalStorageKeys,
-	LocalStorageService
-} from '@/shared/services/localStorageService.ts'
+import { LocalStorageKeys, LocalStorageService } from '@/shared/services/localStorageService.ts'
 import { AppButton } from '@/shared/ui/AppButton'
-import { PasswordField } from '@/shared/ui/Fields'
+import { PasswordField } from '@/shared/ui/Fields/PasswordField'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { defaultAuthValues } from '../../config/defaultAuthValues.ts'
 import { validationAuthValues } from '../../config/validationAuthValues.ts'
@@ -72,10 +69,7 @@ export const AuthByEmail = () => {
 						isRequired
 						{...register('email')}
 					/>
-					<PasswordField<IAuthFormValues>
-						label='password'
-						register={register}
-					/>
+					<PasswordField isRequired {...register('password')} />
 					<Checkbox {...register('rememberMe')}>Запам'ятати мене</Checkbox>
 				</div>
 				<AppButton type='submit'>Увійти</AppButton>
