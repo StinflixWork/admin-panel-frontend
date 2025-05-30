@@ -1,4 +1,6 @@
+import { REMEMBER_ME } from '@/shared/constants/common.ts'
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+import Cookies from 'js-cookie'
 import { IAdminSchema } from './adminSchema.ts'
 
 const initialState: IAdminSchema = {
@@ -14,6 +16,7 @@ const adminSlice = createSlice({
 		},
 		logout: state => {
 			state.accessToken = null
+			Cookies.remove(REMEMBER_ME)
 		}
 	}
 })

@@ -4,12 +4,13 @@ import { Checkbox } from '@heroui/checkbox'
 import { Input } from '@heroui/input'
 import { addToast } from '@heroui/toast'
 import { adminActions, useLoginMutation } from '@/entities/Admin'
+import { REMEMBER_ME } from '@/shared/constants/common.ts'
 import { AppRoutes } from '@/shared/constants/routes'
 import { useAppDispatch } from '@/shared/libs/hooks/useStore.ts'
-import { LocalStorageKeys, LocalStorageService } from '@/shared/services/localStorageService.ts'
 import { AppButton } from '@/shared/ui/AppButton'
 import { PasswordField } from '@/shared/ui/Fields/PasswordField'
 import { yupResolver } from '@hookform/resolvers/yup'
+import Cookies from 'js-cookie'
 import { defaultAuthValues } from '../../config/defaultAuthValues.ts'
 import { validationAuthValues } from '../../config/validationAuthValues.ts'
 import { IAuthFormValues } from '../../types/authFormValues.ts'
@@ -39,10 +40,9 @@ export const AuthByEmail = () => {
 			dispatch(adminActions.setAccessToken(accessToken))
 
 			if (rememberMe) {
-				LocalStorageService.setItem(
-					LocalStorageKeys.REMEMBER_ME,
-					JSON.stringify(authCredentials.rememberMe)
-				)
+				Cookies.set(REMEMBER_ME, JSON.stringify(rememberMe), { expires: 30 })
+			} else {
+				Cookies.set(REMEMBER_ME, JSON.stringify(rememberMe))
 			}
 
 			navigate(AppRoutes.MAIN, { replace: true })

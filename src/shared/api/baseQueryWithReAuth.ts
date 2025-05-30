@@ -1,12 +1,13 @@
 import { AppState } from '@/app/providers/StoreProvider'
+import { REMEMBER_ME } from '@/shared/constants/common.ts'
 import {
 	BaseQueryFn,
 	FetchArgs,
 	FetchBaseQueryError,
 	fetchBaseQuery
 } from '@reduxjs/toolkit/query/react'
+import Cookies from 'js-cookie'
 import { AppRoutes } from '../constants/routes/'
-import { LocalStorageKeys, LocalStorageService } from '../services/localStorageService.ts'
 import { IAccessTokenResource } from '../types/common.ts'
 
 const baseQuery = fetchBaseQuery({
@@ -30,11 +31,11 @@ export const baseQueryWithReAuth: BaseQueryFn<
 	FetchBaseQueryError
 > = async (args, api, extraOptions) => {
 	let result = await baseQuery(args, api, extraOptions)
-	const rememberMe = LocalStorageService.getItem(LocalStorageKeys.REMEMBER_ME)
+	const rememberMe = Cookies.get(REMEMBER_ME)
 
 	if (result.error?.status === 401 && rememberMe) {
 		const refreshResult = await baseQuery(
-			{ url: '/auth/refresh', method: 'POST', credentials: 'include' },
+			{ url: '/auth/refresh', method: 'POST' },
 			api,
 			extraOptions
 		)
@@ -48,16 +49,8 @@ export const baseQueryWithReAuth: BaseQueryFn<
 			result = await baseQuery(args, api, extraOptions)
 		} else {
 			api.dispatch({ type: 'admin/logout' })
-			await baseQuery(
-				{
-					url: '/auth/logout',
-					method: 'POST',
-					credentials: 'include'
-				},
-				api,
-				extraOptions
-			)
-			LocalStorageService.removeItem(LocalStorageKeys.REMEMBER_ME)
+			await baseQuery({ url: '/auth/logout', method: 'POST' }, api, extraOptions)
+			Cookies.remove(REMEMBER_ME)
 			window.location.href = AppRoutes.AUTH
 		}
 	}
