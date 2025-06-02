@@ -1,7 +1,6 @@
-import { IAuthFormValues } from '../types/authFormValues.ts'
+import { AuthFormFieldsType } from './validationAuthValues.ts'
 
-export const defaultAuthValues: IAuthFormValues = {
+export const defaultAuthValues: AuthFormFieldsType = {
 	email: '',
-	password: '',
-	rememberMe: false
+	password: ''
 }

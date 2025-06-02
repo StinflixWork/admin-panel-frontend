@@ -1,12 +1,10 @@
 import { AppState } from '@/app/providers/StoreProvider'
-import { REMEMBER_ME } from '@/shared/constants/common.ts'
 import {
 	BaseQueryFn,
 	FetchArgs,
 	FetchBaseQueryError,
 	fetchBaseQuery
 } from '@reduxjs/toolkit/query/react'
-import Cookies from 'js-cookie'
 import { AppRoutes } from '../constants/routes/'
 import { IAccessTokenResource } from '../types/common.ts'
 
@@ -31,9 +29,8 @@ export const baseQueryWithReAuth: BaseQueryFn<
 	FetchBaseQueryError
 > = async (args, api, extraOptions) => {
 	let result = await baseQuery(args, api, extraOptions)
-	const rememberMe = Cookies.get(REMEMBER_ME)
 
-	if (result.error?.status === 401 && rememberMe) {
+	if (result.error && result.error.status === 401) {
 		const refreshResult = await baseQuery(
 			{ url: '/auth/refresh', method: 'POST' },
 			api,
@@ -50,8 +47,7 @@ export const baseQueryWithReAuth: BaseQueryFn<
 		} else {
 			api.dispatch({ type: 'admin/logout' })
 			await baseQuery({ url: '/auth/logout', method: 'POST' }, api, extraOptions)
-			Cookies.remove(REMEMBER_ME)
-			window.location.href = AppRoutes.AUTH
+			window.location.replace(AppRoutes.AUTH)
 		}
 	}
 
