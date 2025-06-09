@@ -5,7 +5,6 @@ import {
 	FetchBaseQueryError,
 	fetchBaseQuery
 } from '@reduxjs/toolkit/query/react'
-import { AppRoutes } from '../constants/routes/'
 import { IAccessTokenResource } from '../types/common.ts'
 
 const baseQuery = fetchBaseQuery({
@@ -45,9 +44,8 @@ export const baseQueryWithReAuth: BaseQueryFn<
 
 			result = await baseQuery(args, api, extraOptions)
 		} else {
-			api.dispatch({ type: 'admin/logout' })
 			await baseQuery({ url: '/auth/logout', method: 'POST' }, api, extraOptions)
-			window.location.replace(AppRoutes.AUTH)
+			api.dispatch({ type: 'admin/logout' })
 		}
 	}
 
