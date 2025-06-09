@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router'
-import { StoreProvider } from '@/app/providers/StoreProvider'
 import App from './app/App.tsx'
+import { StoreProvider } from './app/providers/StoreProvider'
 import './app/styles/global.scss'
 
 createRoot(document.getElementById('root')!).render(

@@ -13,12 +13,19 @@ const adminApi = api.injectEndpoints({
 			}),
 			invalidatesTags: [GET_ADMIN]
 		}),
+		refresh: build.mutation<IAccessTokenResource, void>({
+			query: () => ({
+				url: '/auth/refresh',
+				method: 'POST'
+			}),
+			invalidatesTags: [GET_ADMIN]
+		}),
 		logout: build.mutation<IApiResponse, void>({
 			query: () => ({
 				url: '/auth/logout',
-				method: 'POST',
-				credentials: 'include'
-			})
+				method: 'POST'
+			}),
+			invalidatesTags: [GET_ADMIN]
 		}),
 		getSession: build.query<IAdminSessionResponse, void>({
 			query: () => '/session',
@@ -27,4 +34,5 @@ const adminApi = api.injectEndpoints({
 	})
 })
 
-export const { useLoginMutation, useLogoutMutation, useGetSessionQuery } = adminApi
+export const { useLoginMutation, useLogoutMutation, useRefreshMutation, useGetSessionQuery } =
+	adminApi
