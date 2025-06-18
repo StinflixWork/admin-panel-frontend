@@ -42,6 +42,13 @@ const clientApi = api.injectEndpoints({
 			}),
 			invalidatesTags: [GET_CLIENT, GET_CLIENTS]
 		}),
+		deleteClientAvatarById: build.mutation<IApiResponse, string>({
+			query: clientId => ({
+				url: `/clients/${clientId}/photo`,
+				method: 'DELETE'
+			}),
+			invalidatesTags: [GET_CLIENT, GET_CLIENTS]
+		}),
 		generateClientApiToken: build.mutation<IApiResponse, { client_identifier: string }>({
 			query: ({ client_identifier }) => ({
 				url: '/clients/generate-token',
@@ -58,5 +65,6 @@ export const {
 	useCreateClientMutation,
 	useUpdateClientByIdMutation,
 	useDeleteClientByIdMutation,
+	useDeleteClientAvatarByIdMutation,
 	useGenerateClientApiTokenMutation
 } = clientApi

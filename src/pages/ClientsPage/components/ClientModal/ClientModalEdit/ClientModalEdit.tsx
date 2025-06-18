@@ -11,7 +11,7 @@ interface ClientModalEditProps {
 }
 
 export const ClientModalEdit = ({ data, onClickEdit }: ClientModalEditProps) => {
-	const [files, setFiles] = useState<File[] | null>(null)
+	const [file, setFile] = useState<File | null>(null)
 
 	const [updateClientById] = useUpdateClientByIdMutation()
 
@@ -20,12 +20,13 @@ export const ClientModalEdit = ({ data, onClickEdit }: ClientModalEditProps) => 
 
 		try {
 			Object.entries(formFields).forEach(([field, value]) => {
-				if (isEmpty(value)) return
-				fd.append(field, String(value))
+				if (!isEmpty(value)) {
+					fd.append(field, String(value))
+				}
 			})
 
-			if (files && files.length > 0) {
-				fd.append('picture', files[0])
+			if (file) {
+				fd.append('picture', file)
 			}
 
 			fd.append('_method', 'put')
@@ -40,7 +41,7 @@ export const ClientModalEdit = ({ data, onClickEdit }: ClientModalEditProps) => 
 		<ClientForm
 			onSubmit={onSubmit}
 			onCloseModal={onClickEdit}
-			setFiles={setFiles}
+			setFile={setFile}
 			initialValues={data}
 		/>
 	)

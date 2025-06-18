@@ -7,7 +7,7 @@ import { AppModal } from '@/shared/ui/Modals'
 import { ClientCreateFormFieldsType } from '../../config/clientFormSchema.ts'
 
 export const ClientCreateModal = () => {
-	const [files, setFiles] = useState<File[] | null>(null)
+	const [file, setFile] = useState<File | null>(null)
 	const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure()
 
 	const [createClient] = useCreateClientMutation()
@@ -24,8 +24,8 @@ export const ClientCreateModal = () => {
 				}
 			})
 
-			if (files && files.length > 0) {
-				fd.append('picture', files[0])
+			if (file) {
+				fd.append('picture', file)
 			}
 
 			await createClient(fd).unwrap()
@@ -39,7 +39,7 @@ export const ClientCreateModal = () => {
 		<>
 			<AppButton onPress={onOpen}>Створити клієнта</AppButton>
 			<AppModal isOpen={isOpen} onOpenChange={onOpenChange} title='Створити клієнта'>
-				<ClientCreateForm onSubmit={onSubmit} onCloseModal={onClose} setFiles={setFiles} />
+				<ClientCreateForm onSubmit={onSubmit} onCloseModal={onClose} setFile={setFile} />
 			</AppModal>
 		</>
 	)
