@@ -1,5 +1,6 @@
-import { Logout } from '@/features/Logout'
+import { AppRoutes } from '@/shared/constants/routes'
 import { MENU_ITEMS } from '@/widgets/Sidebar/config/menu.ts'
+import { LogOut } from 'lucide-react'
 import { SidebarItem } from '../SidebarItem'
 import styles from './Sidebar.module.scss'
 
@@ -15,7 +16,7 @@ export const Sidebar = () => {
 						</li>
 					))}
 				</ul>
-				<Logout />
+				<SidebarItem label='Вийти з системи' Icon={LogOut} href={AppRoutes.LOGOUT} />
 			</nav>
 		</div>
 	)

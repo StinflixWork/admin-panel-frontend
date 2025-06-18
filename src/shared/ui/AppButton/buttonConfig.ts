@@ -8,6 +8,5 @@ export const ButtonColors = {
 	DANGER: 'danger'
 } as const
 
-export type TypeButtonVariants =
-	(typeof ButtonVariants)[keyof typeof ButtonVariants]
+export type TypeButtonVariants = (typeof ButtonVariants)[keyof typeof ButtonVariants]
 export type TypeButtonColors = (typeof ButtonColors)[keyof typeof ButtonColors]

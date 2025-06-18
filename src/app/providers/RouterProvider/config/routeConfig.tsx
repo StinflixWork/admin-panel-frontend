@@ -1,5 +1,5 @@
 import { RouteProps } from 'react-router'
-import { ClientsPage } from '@/pages'
+import { ClientsPage, LogoutPage, NotFoundPage } from '@/pages'
 import { AuthPage } from '@/pages/AuthPage'
 import { DashboardPage } from '@/pages/DashboardPage/ui/DashboardPage'
 import { AppRoutes } from '@/shared/constants/routes'
@@ -14,6 +14,11 @@ export const routeConfig: TypeRouteConfig[] = [
 		element: <AuthPage />
 	},
 	{
+		path: AppRoutes.LOGOUT,
+		element: <LogoutPage />,
+		isAuth: true
+	},
+	{
 		path: AppRoutes.MAIN,
 		element: <DashboardPage />,
 		isAuth: true
@@ -22,5 +27,9 @@ export const routeConfig: TypeRouteConfig[] = [
 		path: AppRoutes.CLIENTS,
 		element: <ClientsPage />,
 		isAuth: true
+	},
+	{
+		path: AppRoutes.NOT_FOUND,
+		element: <NotFoundPage />
 	}
 ]
