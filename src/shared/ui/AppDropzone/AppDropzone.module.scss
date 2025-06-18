@@ -1,23 +1,18 @@
 .root {
-  @apply flex flex-col gap-y-1.5;
+  @apply relative py-10 border border-dashed border-primary rounded overflow-hidden
+  hover:border-opacity-65 transition-opacity cursor-pointer;
 
   .dropzone {
-    @apply border-2 border-dashed border-gray-state rounded cursor-pointer relative overflow-hidden;
+    @apply flex flex-col items-center gap-y-3;
 
-    &:focus {
-      @apply border-gray-basic;
-    }
-
-    &:has(.previewImage) {
-      @apply border-none;
-    }
-
-    .previewImage {
-      @apply absolute inset-0;
-
-      & > img {
-        @apply w-full h-full object-cover;
-      }
+    .icon {
+      @apply w-10 h-10 grid place-items-center rounded-lg border border-solid border-[#E4E7EC] text-[#344054] shadow;
     }
   }
+
+  .preview {
+    @apply absolute inset-0;
+  }
 }
+
+

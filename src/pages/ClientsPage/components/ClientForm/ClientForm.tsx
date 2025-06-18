@@ -13,11 +13,11 @@ interface ClientFormProps {
 	initialValues: IClientResource
 	onSubmit: (formFields: ClientFormFieldsType) => void
 	onCloseModal: () => void
-	setFiles: (files: File[]) => void
+	setFile: (file: File | null) => void
 }
 
 export const ClientForm = (props: ClientFormProps) => {
-	const { initialValues, onSubmit, onCloseModal, setFiles } = props
+	const { initialValues, onSubmit, onCloseModal, setFile } = props
 	const clientData = clientDto(initialValues)
 
 	const {
@@ -32,13 +32,7 @@ export const ClientForm = (props: ClientFormProps) => {
 	return (
 		<form className={styles.root} onSubmit={handleSubmit(onSubmit)}>
 			<div className={styles.fields}>
-				<AppDropzone setFileList={setFiles}>
-					<div className='text-sm text-center px-5 py-10'>
-						<p>Натисніть щоб завантажити</p>
-						<p>або перетягніть</p>
-						<p>JPG, PNG до 5 мб</p>
-					</div>
-				</AppDropzone>
+				<AppDropzone picture={initialValues.picture} setFile={setFile} />
 				<TextField
 					label='Назва CRM системи'
 					placeholder='Введіть назву системи'
