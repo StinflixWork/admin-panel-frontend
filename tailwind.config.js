@@ -22,6 +22,9 @@ export default {
 				},
 				red: {
 					basic: '#ef1111'
+				},
+				green: {
+					brand: '#058A8A'
 				}
 			},
 			width: {

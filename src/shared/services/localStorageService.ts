@@ -1,5 +1,5 @@
 export const LocalStorageKeys = {
-	ACCESS_TOKEN: 'access_token'
+	REMEMBER_ME: 'remember_me'
 } as const
 
 type TypeLocalStorageKeys =

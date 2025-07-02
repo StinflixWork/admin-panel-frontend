@@ -1,18 +1,24 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { IAdminSchema } from './adminSchema.ts'
+
+const initialState: IAdminSchema = {
+	accessToken: null,
+	isAuthInitialized: false
+}
 
 const adminSlice = createSlice({
 	name: 'admin',
-	initialState: {
-		isAuth: false,
-		admin: null
-	},
+	initialState,
 	reducers: {
-		setIsAuth: (state, action: PayloadAction<boolean>) => {
-			state.isAuth = action.payload
+		setAccessToken: (state, action: PayloadAction<string>) => {
+			state.accessToken = action.payload
+		},
+		setAuthInitialized: (state, action) => {
+			state.isAuthInitialized = action.payload
 		},
 		logout: state => {
-			state.isAuth = false
-			state.admin = null
+			state.accessToken = null
+			state.isAuthInitialized = false
 		}
 	}
 })
