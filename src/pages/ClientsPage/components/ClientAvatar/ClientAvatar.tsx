@@ -18,7 +18,7 @@ export const ClientAvatar = ({ clientId, picture }: ClientAvatarProps) => {
 			addToast({
 				title: 'Аватар успішно видалено',
 				variant: 'solid',
-				color: 'primary'
+				color: 'success'
 			})
 		} catch (e) {
 			console.error(e)

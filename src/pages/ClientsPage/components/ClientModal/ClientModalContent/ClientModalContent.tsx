@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useGetClientByIdQuery } from '@/entities/Client'
-import { ClientModalEdit } from '@/pages/ClientsPage/components/ClientModal/ClientModalEdit'
+import { CardSkeleton } from '@/shared/ui/Skeletons'
+import { ClientModalEdit } from '../ClientModalEdit'
 import { ClientModalShow } from '../ClientModalShow'
 import styles from './ClientModalContent.module.scss'
 
@@ -15,9 +16,8 @@ export const ClientModalContent = ({ clientId }: ClientModalContentProps) => {
 	const handleShowEdit = () => setIsEdit(true)
 	const handleCloseEdit = () => setIsEdit(false)
 
-	// Skeleton
 	if (isLoading) {
-		return <div>Skeleton</div>
+		return <CardSkeleton />
 	}
 
 	if (!data) {

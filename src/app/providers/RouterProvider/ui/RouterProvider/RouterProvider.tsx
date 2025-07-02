@@ -10,7 +10,7 @@ export const RouterProvider = () => {
 	const routesWithLayout = useCallback((route: TypeRouteConfig) => {
 		let Layout = MainLayout
 
-		const basicRoutes: TypeAppRoutes[] = [AppRoutes.AUTH]
+		const basicRoutes: TypeAppRoutes[] = [AppRoutes.AUTH, AppRoutes.NOT_FOUND]
 
 		if (basicRoutes.includes(route.path as TypeAppRoutes)) {
 			Layout = BasicLayout

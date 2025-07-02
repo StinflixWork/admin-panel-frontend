@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useGetClientsQuery } from '@/entities/Client'
+import { ErrorPage } from '@/pages'
 import { AppLoader } from '@/shared/ui/AppLoader'
 import { Table } from '@/shared/ui/Table'
 import { ClientCreateModal } from '../../components/ClientCreateModal'
@@ -12,6 +13,10 @@ const ClientsPage = () => {
 
 	if (isLoading) {
 		return <AppLoader />
+	}
+
+	if (!data) {
+		return <ErrorPage />
 	}
 
 	// зробити контейнер для секкції, і зробити контейнер для шапки

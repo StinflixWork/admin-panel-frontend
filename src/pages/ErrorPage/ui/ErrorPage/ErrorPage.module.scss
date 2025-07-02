@@ -1,0 +1,7 @@
+.root {
+  @apply h-screen w-full grid place-items-center;
+
+  .title {
+    @apply text-3xl font-semibold text-gray-dark/40;
+  }
+}
