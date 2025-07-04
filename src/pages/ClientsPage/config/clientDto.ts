@@ -1,4 +1,4 @@
-import { IClientResource } from '@/entities/Client/api/clientTypes.ts'
+import { IClientResource } from '@/entities/Client'
 import { ClientFormFieldsType } from '@/pages/ClientsPage/config/clientFormSchema.ts'
 
 export const clientDto = (data: IClientResource): ClientFormFieldsType => ({

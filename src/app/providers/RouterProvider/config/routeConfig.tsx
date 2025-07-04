@@ -1,5 +1,5 @@
 import { RouteProps } from 'react-router'
-import { ClientsPage, LogoutPage, NotFoundPage } from '@/pages'
+import { ClientsPage, LanguagesPage, LogoutPage, NotFoundPage } from '@/pages'
 import { AuthPage } from '@/pages/AuthPage'
 import { DashboardPage } from '@/pages/DashboardPage/ui/DashboardPage'
 import { AppRoutes } from '@/shared/constants/routes'
@@ -26,6 +26,11 @@ export const routeConfig: TypeRouteConfig[] = [
 	{
 		path: AppRoutes.CLIENTS,
 		element: <ClientsPage />,
+		isAuth: true
+	},
+	{
+		path: AppRoutes.LANGUAGES,
+		element: <LanguagesPage />,
 		isAuth: true
 	},
 	{

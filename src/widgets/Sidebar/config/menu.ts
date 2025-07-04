@@ -1,5 +1,5 @@
 import { AppRoutes } from '@/shared/constants/routes'
-import { House, UsersRound } from 'lucide-react'
+import { House, Languages, UsersRound } from 'lucide-react'
 import { TypeSideBarMenu } from '../types/sidebarTypes.ts'
 
 export const MENU_ITEMS: TypeSideBarMenu[] = [
@@ -14,5 +14,11 @@ export const MENU_ITEMS: TypeSideBarMenu[] = [
 		label: 'Клієнти',
 		href: AppRoutes.CLIENTS,
 		Icon: UsersRound
+	},
+	{
+		id: '3',
+		label: 'Мови',
+		href: AppRoutes.LANGUAGES,
+		Icon: Languages
 	}
 ]

@@ -1,6 +1,7 @@
 export { AuthPage } from './AuthPage'
 export { DashboardPage } from './DashboardPage'
 export { ClientsPage } from './ClientsPage'
+export { LanguagesPage } from './LanguagesPage'
 export { LogoutPage } from './LogoutPage'
 export { ErrorPage } from './ErrorPage'
 export { NotFoundPage } from './NotFoundPage'

@@ -1,10 +1,10 @@
 import { createApi } from '@reduxjs/toolkit/query/react'
 import { baseQueryWithReAuth } from './baseQueryWithReAuth.ts'
-import { GET_ADMIN, GET_CLIENT, GET_CLIENTS } from './tags.ts'
+import { GET_ADMIN, GET_CLIENT, GET_CLIENTS, LANGUAGE, LANGUAGES } from './tags.ts'
 
 export const api = createApi({
 	reducerPath: 'api',
-	tagTypes: [GET_ADMIN, GET_CLIENTS, GET_CLIENT],
+	tagTypes: [GET_ADMIN, GET_CLIENTS, GET_CLIENT, LANGUAGE, LANGUAGES],
 	baseQuery: baseQueryWithReAuth,
 	endpoints: () => ({})
 })
