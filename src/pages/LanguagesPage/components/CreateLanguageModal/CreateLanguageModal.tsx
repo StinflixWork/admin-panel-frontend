@@ -1,85 +1,28 @@
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { Checkbox } from '@heroui/checkbox'
 import { useDisclosure } from '@heroui/modal'
 import { useCreateLanguageMutation } from '@/entities/Language'
-import { AppButton, ButtonVariants } from '@/shared/ui/AppButton'
-import { SelectField } from '@/shared/ui/Fields/SelectField'
-import { TextField } from '@/shared/ui/Fields/TextField'
+import { ILanguageCredentials } from '@/entities/Language/api/languageType.ts'
+import { LanguageForm } from '@/pages/LanguagesPage/components/LanguageForm'
+import { AppButton } from '@/shared/ui/AppButton'
 import { AppModal } from '@/shared/ui/Modals'
-import { yupResolver } from '@hookform/resolvers/yup'
-import isoLang from 'iso-639-1'
-import { LanguageFormFieldsType, languageSchema } from '../../config/languageFormSchema'
-import styles from './CreateLanguageModal.module.scss'
 
 export const CreateLanguageModal = () => {
 	const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure()
 	const [createLanguage, { isLoading }] = useCreateLanguageMutation()
 
-	const {
-		register,
-		handleSubmit,
-		reset,
-		formState: { errors }
-	} = useForm<LanguageFormFieldsType>({
-		defaultValues: { active: true },
-		resolver: yupResolver(languageSchema)
-	})
-
-	const languageOptions = isoLang.getAllCodes().map(code => ({
-		label: `${isoLang.getName(code)} (${code.toUpperCase()})`,
-		key: code
-	}))
-
-	const onSubmit: SubmitHandler<LanguageFormFieldsType> = async formFields => {
+	const onSubmit = async (formFields: ILanguageCredentials) => {
 		try {
-			const formattedFields = { ...formFields, active: +formFields.active }
-			await createLanguage(formattedFields).unwrap()
-			handleCloseModal()
+			await createLanguage(formFields).unwrap()
+			onClose()
 		} catch (e) {
 			console.error(e)
 		}
-	}
-
-	const handleCloseModal = () => {
-		onClose()
-		reset()
 	}
 
 	return (
 		<>
 			<AppButton onPress={onOpen}>Додати мову</AppButton>
 			<AppModal isOpen={isOpen} onOpenChange={onOpenChange} title='Створити мову'>
-				<form onSubmit={handleSubmit(onSubmit)} className={styles.root}>
-					<div className={styles.fields}>
-						<TextField
-							label='Назва'
-							placeholder='Введіть назву мови'
-							error={errors.name?.message}
-							{...register('name')}
-						/>
-						<SelectField
-							label='Код'
-							placeholder='Оберіть код'
-							items={languageOptions}
-							{...register('code')}
-						/>
-						<Checkbox {...register('active')}>Активний</Checkbox>
-					</div>
-					<div className={styles.actions}>
-						<AppButton
-							onPress={handleCloseModal}
-							variant={ButtonVariants.OUTLINE}
-							color='danger'
-							type='button'
-							fullWidth
-						>
-							Скасувати
-						</AppButton>
-						<AppButton type='submit' isLoading={isLoading} fullWidth>
-							Створити
-						</AppButton>
-					</div>
-				</form>
+				<LanguageForm onClose={onClose} getLanguageFormFields={onSubmit} isLoading={isLoading} />
 			</AppModal>
 		</>
 	)

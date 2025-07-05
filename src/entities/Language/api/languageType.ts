@@ -1,3 +1,13 @@
+export interface IUpdateLanguageStatusRequest {
+	languageId: string
+	active: number
+}
+
+export interface IUpdateLanguageRequest {
+	languageId: string
+	data: ILanguageCredentials
+}
+
 export interface ILanguageResource {
 	id: string
 	name: string
