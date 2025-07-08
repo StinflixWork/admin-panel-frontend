@@ -44,8 +44,7 @@ export const LanguageForm = (props: LanguageFormProps) => {
 
 	const onSubmit: SubmitHandler<LanguageFormFieldsType> = async formFields => {
 		try {
-			const formattedFields = { ...formFields, active: +formFields.active }
-			await getLanguageFormFields(formattedFields)
+			await getLanguageFormFields(formFields)
 			reset()
 		} catch (e) {
 			console.error(e)

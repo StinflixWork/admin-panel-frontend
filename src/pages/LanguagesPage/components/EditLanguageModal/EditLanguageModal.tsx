@@ -1,6 +1,7 @@
 import { useDisclosure } from '@heroui/modal'
 import { ILanguageResource, useUpdateLanguageByIdMutation } from '@/entities/Language'
 import { ILanguageCredentials } from '@/entities/Language/api/languageType.ts'
+import { getChangedFields } from '@/shared/libs/utils/getChangedFields.ts'
 import { AppModal } from '@/shared/ui/Modals'
 import { Pencil } from 'lucide-react'
 import { languageDto } from '../../config/languageDto.ts'
@@ -18,7 +19,8 @@ export const EditLanguageModal = ({ language }: EditLanguageModalProps) => {
 
 	const onSubmit = async (formFields: ILanguageCredentials) => {
 		try {
-			await updateLanguage({ languageId: language.id, data: formFields }).unwrap()
+			const diffFields = getChangedFields(languageData, formFields)
+			await updateLanguage({ languageId: language.id, data: diffFields }).unwrap()
 			onClose()
 		} catch (e) {
 			console.error(e)

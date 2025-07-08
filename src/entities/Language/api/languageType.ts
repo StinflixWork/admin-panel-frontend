@@ -5,7 +5,7 @@ export interface IUpdateLanguageStatusRequest {
 
 export interface IUpdateLanguageRequest {
 	languageId: string
-	data: ILanguageCredentials
+	data: Partial<ILanguageCredentials>
 }
 
 export interface ILanguageResource {
@@ -22,5 +22,5 @@ export interface ILanguageResource {
 export interface ILanguageCredentials {
 	name: string
 	code: string
-	active: number
+	active: boolean
 }
