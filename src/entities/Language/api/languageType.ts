@@ -8,6 +8,11 @@ export interface IUpdateLanguageRequest {
 	data: Partial<ILanguageCredentials>
 }
 
+export interface ILanguageOrderRequest {
+	languageId: string
+	order: number
+}
+
 export interface ILanguageResource {
 	id: string
 	name: string

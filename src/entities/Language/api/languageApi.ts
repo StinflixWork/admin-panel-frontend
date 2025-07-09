@@ -4,6 +4,7 @@ import { IApiResponseWithMeta } from '@/shared/types/common.ts'
 import { PaginationState } from '@tanstack/react-table'
 import {
 	ILanguageCredentials,
+	ILanguageOrderRequest,
 	ILanguageResource,
 	IUpdateLanguageRequest,
 	IUpdateLanguageStatusRequest
@@ -34,6 +35,14 @@ const languageApi = api.injectEndpoints({
 			}),
 			invalidatesTags: [GET_LANGUAGE, GET_LANGUAGES]
 		}),
+		updateLanguageOrder: build.mutation<ILanguageResource, ILanguageOrderRequest>({
+			query: ({ languageId, order }) => ({
+				url: `/languages/${languageId}/reorder`,
+				method: 'POST',
+				body: { order }
+			}),
+			invalidatesTags: [GET_LANGUAGES, GET_LANGUAGES]
+		}),
 		createLanguage: build.mutation<ILanguageResource, ILanguageCredentials>({
 			query: languageData => ({
 				url: '/languages',
@@ -57,5 +66,6 @@ export const {
 	useCreateLanguageMutation,
 	useUpdateLanguageByIdMutation,
 	useDeleteLanguageMutation,
-	useToggleActiveLanguageMutation
+	useToggleActiveLanguageMutation,
+	useUpdateLanguageOrderMutation
 } = languageApi

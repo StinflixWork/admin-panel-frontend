@@ -3,5 +3,9 @@
 
   .header {
     @apply flex items-center justify-between;
+
+    .actions {
+      @apply flex items-center gap-x-4;
+    }
   }
 }

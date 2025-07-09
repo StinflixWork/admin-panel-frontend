@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useGetLanguagesQuery } from '@/entities/Language'
 import { ErrorPage } from '@/pages'
 import { CreateLanguageModal } from '@/pages/LanguagesPage/components/CreateLanguageModal'
+import { ReorderLanguagesModal } from '@/pages/LanguagesPage/components/ReorderLanguagesModal'
 import { AppLoader } from '@/shared/ui/AppLoader'
 import { Table } from '@/shared/ui/Table'
 import { languagesColumns } from '../../config/languagesColumns.tsx'
@@ -23,7 +24,10 @@ const LanguagesPage = () => {
 		<section className={styles.root}>
 			<div className={styles.header}>
 				<h2 className='text-3xl font-semibold text-gray-dark'>Мови</h2>
-				<CreateLanguageModal />
+				<div className={styles.actions}>
+					<ReorderLanguagesModal languages={data.data} metaLanguages={data.meta} />
+					<CreateLanguageModal />
+				</div>
 			</div>
 			<Table
 				tableData={data}
