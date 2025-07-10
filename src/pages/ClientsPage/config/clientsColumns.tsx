@@ -1,4 +1,4 @@
-import { IClientResource } from '@/entities/Client/api/clientTypes.ts'
+import { IClientResource } from '@/entities/Client'
 import { ClientsTableActions } from '@/pages/ClientsPage/components/ClientsTableActions'
 import { PictureCell } from '@/shared/ui/Table/components'
 import { ColumnDef } from '@tanstack/react-table'

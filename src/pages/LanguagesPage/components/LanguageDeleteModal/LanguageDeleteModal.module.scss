@@ -1,0 +1,6 @@
+.root {
+
+  .iconButton {
+    @apply p-1 rounded hover:bg-gray-light transition-colors;
+  }
+}

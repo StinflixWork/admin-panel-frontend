@@ -3,6 +3,7 @@ export const AppRoutes = {
 	AUTH: '/auth',
 	LOGOUT: '/logout',
 	CLIENTS: '/clients',
+	LANGUAGES: '/languages',
 	NOT_FOUND: '*'
 } as const
 

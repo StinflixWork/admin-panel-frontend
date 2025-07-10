@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form'
-import { IClientResource } from '@/entities/Client/api/clientTypes.ts'
+import { IClientResource } from '@/entities/Client'
 import { AppButton, ButtonVariants } from '@/shared/ui/AppButton'
 import { AppDropzone } from '@/shared/ui/AppDropzone'
 import { PasswordField } from '@/shared/ui/Fields/PasswordField'

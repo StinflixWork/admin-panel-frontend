@@ -7,7 +7,7 @@ export interface IClientResource {
 	connection: IClientConnectionResource
 }
 
-interface IClientConnectionResource {
+export interface IClientConnectionResource {
 	id: string
 	connection: string
 	host: string

@@ -22,3 +22,5 @@ export interface IAccessTokenResource {
 	token_type: string
 	expires_in: number
 }
+
+export type SelectionOptions = 'all' | Set<string | number>

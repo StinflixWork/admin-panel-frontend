@@ -1,3 +1,5 @@
 export const GET_ADMIN = 'admin'
 export const GET_CLIENTS = 'clients'
 export const GET_CLIENT = 'client'
+export const GET_LANGUAGES = 'languages'
+export const GET_LANGUAGE = 'language'

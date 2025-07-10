@@ -1,4 +1,4 @@
-import { IClientResource } from '@/entities/Client/api/clientTypes.ts'
+import { IClientResource } from '@/entities/Client'
 import { AppButton } from '@/shared/ui/AppButton'
 import { InfoField } from '@/shared/ui/Fields/InfoField'
 import { ClientAvatar } from '../../ClientAvatar'

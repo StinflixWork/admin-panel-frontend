@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import { useUpdateClientByIdMutation } from '@/entities/Client'
-import { IClientResource } from '@/entities/Client/api/clientTypes.ts'
+import { IClientResource, useUpdateClientByIdMutation } from '@/entities/Client'
 import { ClientForm } from '@/pages/ClientsPage/components/ClientForm'
 import { ClientFormFieldsType } from '@/pages/ClientsPage/config/clientFormSchema.ts'
 import { isEmpty } from '@/shared/libs/utils/isEmpty.ts'
