@@ -1,50 +1,29 @@
-import { IApiResponseWithMeta } from '@/shared/types/common.ts'
-import {
-	ColumnDef,
-	OnChangeFn,
-	PaginationState,
-	getCoreRowModel,
-	useReactTable
-} from '@tanstack/react-table'
-import { TableBody, TableFooter, TableHeader, TableNoData } from '../../components'
+import { ColumnDef, TableOptions, getCoreRowModel, useReactTable } from '@tanstack/react-table'
+import { TableBody, TableHeader, TableNoData } from '../../components'
 import styles from './Table.module.scss'
 
 interface TableProps<TData> {
-	tableData: IApiResponseWithMeta<TData> | undefined
+	data: TData[] | undefined
 	columns: ColumnDef<TData>[]
-	pagination: PaginationState
-	setPagination: OnChangeFn<PaginationState>
+	options?: Omit<TableOptions<TData>, 'getCoreRowModel' | 'data' | 'columns'>
 }
 
 const fallbackData: never[] = []
 
-export const Table = <T,>(props: TableProps<T>) => {
-	const { tableData, columns, pagination, setPagination } = props
-
+export const Table = <T,>({ data, columns, options = {} }: TableProps<T>) => {
 	const table = useReactTable({
 		columns,
-		data: tableData?.data || fallbackData,
-		manualPagination: true,
-		state: {
-			pagination
-		},
-		onPaginationChange: setPagination,
-		getCoreRowModel: getCoreRowModel()
+		data: data || fallbackData,
+		getCoreRowModel: getCoreRowModel(),
+		...options
 	})
 
 	return (
 		<div className={styles.root}>
 			<table className={styles.table}>
 				<TableHeader getHeaderGroups={table.getHeaderGroups} />
-				<tbody>{tableData ? <TableBody getRowModel={table.getRowModel} /> : <TableNoData />}</tbody>
+				<tbody>{data ? <TableBody getRowModel={table.getRowModel} /> : <TableNoData />}</tbody>
 			</table>
-			{tableData && (
-				<TableFooter
-					total={tableData.meta.page.total}
-					pagination={pagination}
-					setPagination={setPagination}
-				/>
-			)}
 		</div>
 	)
 }

@@ -2,13 +2,13 @@ import { useState } from 'react'
 import { useGetClientsQuery } from '@/entities/Client'
 import { ErrorPage } from '@/pages'
 import { AppLoader } from '@/shared/ui/AppLoader'
-import { Table } from '@/shared/ui/Table'
+import { ContainerTable } from '@/shared/ui/Table'
 import { ClientCreateModal } from '../../components/ClientCreateModal'
 import { clientsColumns } from '../../config/clientsColumns.tsx'
 import styles from './ClientsPage.module.scss'
 
 const ClientsPage = () => {
-	const [pagination, setPagination] = useState({ pageIndex: 1, pageSize: 10 })
+	const [pagination, setPagination] = useState({ pageIndex: 1, pageSize: 2 })
 	const { data, isLoading } = useGetClientsQuery(pagination)
 
 	if (isLoading) {
@@ -26,7 +26,7 @@ const ClientsPage = () => {
 				<h2 className='text-3xl font-semibold text-gray-dark'>Клієнти</h2>
 				<ClientCreateModal />
 			</div>
-			<Table
+			<ContainerTable
 				tableData={data}
 				columns={clientsColumns}
 				pagination={pagination}
