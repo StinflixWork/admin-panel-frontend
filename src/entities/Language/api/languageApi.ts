@@ -1,7 +1,5 @@
 import { api } from '@/shared/api/api.ts'
 import { GET_LANGUAGE, GET_LANGUAGES } from '@/shared/api/tags.ts'
-import { IApiResponseWithMeta } from '@/shared/types/common.ts'
-import { PaginationState } from '@tanstack/react-table'
 import {
 	ILanguageCredentials,
 	ILanguageOrderRequest,
@@ -12,11 +10,8 @@ import {
 
 const languageApi = api.injectEndpoints({
 	endpoints: build => ({
-		getLanguages: build.query<IApiResponseWithMeta<ILanguageResource>, PaginationState>({
-			query: ({ pageSize, pageIndex }) => ({
-				url: '/languages',
-				params: { page: pageIndex, limit: pageSize }
-			}),
+		getLanguages: build.query<ILanguageResource[], void>({
+			query: () => '/languages',
 			providesTags: [GET_LANGUAGES]
 		}),
 		updateLanguageById: build.mutation<ILanguageResource, IUpdateLanguageRequest>({
