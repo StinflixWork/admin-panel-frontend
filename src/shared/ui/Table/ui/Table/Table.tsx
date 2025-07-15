@@ -10,7 +10,7 @@ interface TableProps<TData> {
 
 const fallbackData: never[] = []
 
-export const Table = <T,>({ data, columns, options = {} }: TableProps<T>) => {
+export const Table = <T,>({ data, columns, options }: TableProps<T>) => {
 	const table = useReactTable({
 		columns,
 		data: data || fallbackData,

@@ -1,4 +1,5 @@
 import { ILanguageResource } from '@/entities/Language'
+import { RowDragHandleCell } from '@/features/LanguagesDndTable/components/RowDragHandleCell'
 import { EditLanguageModal } from '@/pages/LanguagesPage/components/EditLanguageModal'
 import { LanguageDeleteModal } from '@/pages/LanguagesPage/components/LanguageDeleteModal'
 import { LanguageHide } from '@/pages/LanguagesPage/components/LanguageHide'
@@ -7,6 +8,10 @@ import { ColumnDef } from '@tanstack/react-table'
 
 export const languagesColumns: ColumnDef<ILanguageResource>[] = [
 	{
+		id: 'move',
+		cell: ({ row }) => <RowDragHandleCell rowId={row.original.id} />
+	},
+	{
 		header: 'Мова',
 		accessorKey: 'name',
 		cell: props => props.getValue()
@@ -14,11 +19,6 @@ export const languagesColumns: ColumnDef<ILanguageResource>[] = [
 	{
 		header: 'Код',
 		accessorKey: 'code',
-		cell: props => props.getValue()
-	},
-	{
-		header: 'Порядок',
-		accessorKey: 'order',
 		cell: props => props.getValue()
 	},
 	{
