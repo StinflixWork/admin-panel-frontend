@@ -13,6 +13,7 @@ interface ContainerTableProps<TData> {
 
 export const ContainerTable = <T,>(props: ContainerTableProps<T>) => {
 	const { tableData, columns, pagination, setPagination } = props
+	const pageTotal = tableData?.meta.page.total ?? 0
 
 	return (
 		<div className={styles.root}>
@@ -25,12 +26,8 @@ export const ContainerTable = <T,>(props: ContainerTableProps<T>) => {
 					onPaginationChange: setPagination
 				}}
 			/>
-			{tableData && (
-				<TableFooter
-					total={tableData.meta.page.total}
-					pagination={pagination}
-					setPagination={setPagination}
-				/>
+			{pageTotal > 1 && (
+				<TableFooter total={pageTotal} pagination={pagination} setPagination={setPagination} />
 			)}
 		</div>
 	)
