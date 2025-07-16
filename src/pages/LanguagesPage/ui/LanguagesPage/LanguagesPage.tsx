@@ -1,9 +1,8 @@
 import { useGetLanguagesQuery } from '@/entities/Language'
+import { LanguagesDndTable } from '@/features/LanguagesDndTable'
 import { ErrorPage } from '@/pages'
 import { AppLoader } from '@/shared/ui/AppLoader'
-import { Table } from '@/shared/ui/Table'
 import { CreateLanguageModal } from '../../components/CreateLanguageModal'
-import { ReorderLanguagesModal } from '../../components/ReorderLanguagesModal'
 import { languagesColumns } from '../../config/languagesColumns.tsx'
 import styles from './LanguagesPage.module.scss'
 
@@ -23,11 +22,10 @@ const LanguagesPage = () => {
 			<div className={styles.header}>
 				<h2 className='text-3xl font-semibold text-gray-dark'>Мови</h2>
 				<div className={styles.actions}>
-					<ReorderLanguagesModal languages={data ?? []} />
 					<CreateLanguageModal />
 				</div>
 			</div>
-			<Table data={data} columns={languagesColumns} />
+			<LanguagesDndTable data={data} columns={languagesColumns} />
 		</section>
 	)
 }
