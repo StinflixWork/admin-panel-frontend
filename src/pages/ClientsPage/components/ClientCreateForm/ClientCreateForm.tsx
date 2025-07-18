@@ -4,7 +4,7 @@ import {
 	ClientCreateFormFieldsType,
 	clientCreateFormSchema
 } from '@/pages/ClientsPage/config/clientFormSchema.ts'
-import { AppButton, ButtonVariants } from '@/shared/ui/AppButton'
+import { AppButton } from '@/shared/ui/AppButton'
 import { AppDropzone } from '@/shared/ui/AppDropzone'
 import { PasswordField } from '@/shared/ui/Fields/PasswordField'
 import { TextField } from '@/shared/ui/Fields/TextField'
@@ -86,13 +86,7 @@ export const ClientCreateForm = (props: ClientCreateFormProps) => {
 				<Checkbox {...register('active')}>Активний</Checkbox>
 			</div>
 			<div className={styles.actions}>
-				<AppButton
-					onPress={onCloseModal}
-					variant={ButtonVariants.OUTLINE}
-					color='danger'
-					type='button'
-					fullWidth
-				>
+				<AppButton onPress={onCloseModal} variant='outline' color='danger' type='button' fullWidth>
 					Скасувати
 				</AppButton>
 				<AppButton type='submit' fullWidth>

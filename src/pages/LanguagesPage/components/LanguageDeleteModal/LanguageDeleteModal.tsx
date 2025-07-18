@@ -1,6 +1,6 @@
 import { useDisclosure } from '@heroui/modal'
 import { useDeleteLanguageMutation } from '@/entities/Language'
-import { AppButton, ButtonVariants } from '@/shared/ui/AppButton'
+import { AppButton } from '@/shared/ui/AppButton'
 import { AppModal } from '@/shared/ui/Modals'
 import { Trash2 } from 'lucide-react'
 import styles from './LanguageDeleteModal.module.scss'
@@ -32,7 +32,7 @@ export const LanguageDeleteModal = ({ languageId }: LanguageDeleteModalProps) =>
 				<div className='flex flex-col gap-y-4'>
 					<h3>Ви точно хочете видалити цю мову?</h3>
 					<div className='grid grid-cols-2 items-center gap-x-3'>
-						<AppButton variant={ButtonVariants.OUTLINE} onPress={onClose}>
+						<AppButton variant='outline' onPress={onClose}>
 							Скасувати
 						</AppButton>
 						<AppButton color='danger' onPress={handleDeleteClient}>

@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 import { IClientResource } from '@/entities/Client'
-import { AppButton, ButtonVariants } from '@/shared/ui/AppButton'
+import { AppButton } from '@/shared/ui/AppButton'
 import { AppDropzone } from '@/shared/ui/AppDropzone'
 import { PasswordField } from '@/shared/ui/Fields/PasswordField'
 import { TextField } from '@/shared/ui/Fields/TextField'
@@ -79,13 +79,7 @@ export const ClientForm = (props: ClientFormProps) => {
 				/>
 			</div>
 			<div className={styles.actions}>
-				<AppButton
-					onPress={onCloseModal}
-					variant={ButtonVariants.OUTLINE}
-					color='danger'
-					type='button'
-					fullWidth
-				>
+				<AppButton onPress={onCloseModal} variant='outline' color='danger' type='button' fullWidth>
 					Скасувати
 				</AppButton>
 				<AppButton type='submit' fullWidth>
