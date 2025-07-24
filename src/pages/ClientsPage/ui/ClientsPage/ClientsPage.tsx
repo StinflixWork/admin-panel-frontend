@@ -1,6 +1,6 @@
-import { useState } from 'react'
 import { useGetClientsQuery } from '@/entities/Client'
 import { ErrorPage } from '@/pages'
+import { useQueryPagination } from '@/shared/libs/hooks/useQueryPagination.ts'
 import { AppLoader } from '@/shared/ui/AppLoader'
 import { ContainerTable } from '@/shared/ui/Table'
 import { ClientCreateModal } from '../../components/ClientCreateModal'
@@ -8,9 +8,9 @@ import { clientsColumns } from '../../config/clientsColumns.tsx'
 import styles from './ClientsPage.module.scss'
 
 const ClientsPage = () => {
-	const [pagination, setPagination] = useState({ pageIndex: 1, pageSize: 10 })
-	const { data, isLoading } = useGetClientsQuery(pagination)
+	const { pagination, setPagination } = useQueryPagination()
 
+	const { data, isLoading } = useGetClientsQuery(pagination)
 	if (isLoading) {
 		return <AppLoader />
 	}
