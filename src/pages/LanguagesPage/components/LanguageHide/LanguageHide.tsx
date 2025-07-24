@@ -20,7 +20,7 @@ export const LanguageHide = ({ languageId, active }: LanguageHideProps) => {
 	return (
 		<button
 			onClick={handleToggleStatusLanguage}
-			className='p-1 rounded hover:bg-gray-light transition-colors'
+			className='rounded p-1 transition-colors hover:bg-gray-light'
 		>
 			{active ? (
 				<Eye className='text-green-brand' size={24} />

@@ -2,8 +2,7 @@ export const LocalStorageKeys = {
 	REMEMBER_ME: 'remember_me'
 } as const
 
-type TypeLocalStorageKeys =
-	(typeof LocalStorageKeys)[keyof typeof LocalStorageKeys]
+type TypeLocalStorageKeys = (typeof LocalStorageKeys)[keyof typeof LocalStorageKeys]
 
 export class LocalStorageService {
 	static getItem(key: TypeLocalStorageKeys): string | null {

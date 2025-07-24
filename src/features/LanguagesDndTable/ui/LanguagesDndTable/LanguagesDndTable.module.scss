@@ -1,23 +1,23 @@
 .root {
-  @apply relative overflow-x-auto overflow-y-hidden;
+	@apply relative overflow-x-auto overflow-y-hidden;
 
-  .table {
-    @apply w-full text-left text-gray-dark;
-  }
+	.table {
+		@apply w-full text-left text-gray-dark;
+	}
 
-  .row {
-    @apply border border-solid border-gray-state;
+	.row {
+		@apply border border-solid border-gray-state;
 
-    .cell {
-      @apply p-2 first:w-10;
-    }
-  }
+		.cell {
+			@apply p-2 first:w-10;
+		}
+	}
 
-  .header {
-    @apply text-lg bg-gray-light;
-  }
+	.header {
+		@apply bg-gray-light text-lg;
+	}
 
-  .body {
-    @apply text-base;
-  }
+	.body {
+		@apply text-base;
+	}
 }

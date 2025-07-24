@@ -29,7 +29,7 @@ export const EditLanguageModal = ({ language }: EditLanguageModalProps) => {
 
 	return (
 		<>
-			<button className='p-1 rounded hover:bg-gray-light transition-colors' onClick={onOpen}>
+			<button className='rounded p-1 transition-colors hover:bg-gray-light' onClick={onOpen}>
 				<Pencil className='text-green-brand' size={24} />
 			</button>
 			<AppModal isOpen={isOpen} onOpenChange={onOpenChange} title='Редагувати мову'>

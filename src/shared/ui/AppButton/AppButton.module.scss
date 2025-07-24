@@ -1,30 +1,30 @@
 .root {
-  &.solid,
-  &.outline {
-    @apply text-base border border-solid outline-none focus:outline-none;
-  }
+	&.solid,
+	&.outline {
+		@apply border border-solid text-base outline-none focus:outline-none;
+	}
 
-  &.solid {
-    @apply border-transparent text-gray-light;
+	&.solid {
+		@apply border-transparent text-gray-light;
 
-    &.primary {
-      @apply bg-primary;
-    }
+		&.primary {
+			@apply bg-primary;
+		}
 
-    &.danger {
-      @apply bg-red-basic;
-    }
-  }
+		&.danger {
+			@apply bg-red-basic;
+		}
+	}
 
-  &.outline {
-    @apply bg-transparent text-gray-dark;
+	&.outline {
+		@apply bg-transparent text-gray-dark;
 
-    &.primary {
-      @apply border-primary hover:text-primary;
-    }
+		&.primary {
+			@apply border-primary hover:text-primary;
+		}
 
-    &.danger {
-      @apply border-red-basic hover:text-red-basic;
-    }
-  }
+		&.danger {
+			@apply border-red-basic hover:text-red-basic;
+		}
+	}
 }

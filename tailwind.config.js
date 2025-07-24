@@ -9,7 +9,8 @@ export default {
 	],
 	theme: {
 		fontFamily: {
-			inter: 'Inter, sans-serif'
+			inter: 'Inter, sans-serif',
+			Poppins: 'Poppins, sans-serif'
 		},
 		extend: {
 			colors: {
@@ -28,7 +29,7 @@ export default {
 				}
 			},
 			width: {
-				sidebar: '280px'
+				sidebar: '306px'
 			}
 		}
 	},

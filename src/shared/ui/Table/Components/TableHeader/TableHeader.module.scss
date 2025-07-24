@@ -1,11 +1,11 @@
 .root {
-  @apply text-lg bg-gray-light;
+	@apply bg-gray-light text-lg;
 
-  .row {
-    @apply border border-solid border-gray-state;
+	.row {
+		@apply border border-solid border-gray-state;
 
-    .cell {
-      @apply p-2;
-    }
-  }
+		.cell {
+			@apply p-2;
+		}
+	}
 }

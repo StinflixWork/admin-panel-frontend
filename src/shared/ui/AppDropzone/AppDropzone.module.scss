@@ -1,18 +1,15 @@
 .root {
-  @apply relative py-10 border border-dashed border-primary rounded overflow-hidden
-  hover:border-opacity-65 transition-opacity cursor-pointer;
+	@apply relative cursor-pointer overflow-hidden rounded border border-dashed border-primary py-10 transition-opacity hover:border-opacity-65;
 
-  .dropzone {
-    @apply flex flex-col items-center gap-y-3;
+	.dropzone {
+		@apply flex flex-col items-center gap-y-3;
 
-    .icon {
-      @apply w-10 h-10 grid place-items-center rounded-lg border border-solid border-[#E4E7EC] text-[#344054] shadow;
-    }
-  }
+		.icon {
+			@apply grid h-10 w-10 place-items-center rounded-lg border border-solid border-[#E4E7EC] text-[#344054] shadow;
+		}
+	}
 
-  .preview {
-    @apply absolute inset-0;
-  }
+	.preview {
+		@apply absolute inset-0;
+	}
 }
-
-

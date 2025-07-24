@@ -7,8 +7,7 @@ export const storeConfig = configureStore({
 		admin: adminReducer,
 		[api.reducerPath]: api.reducer
 	},
-	middleware: getDefaultMiddleware =>
-		getDefaultMiddleware().concat(api.middleware)
+	middleware: getDefaultMiddleware => getDefaultMiddleware().concat(api.middleware)
 })
 
 export type AppState = ReturnType<typeof storeConfig.getState>

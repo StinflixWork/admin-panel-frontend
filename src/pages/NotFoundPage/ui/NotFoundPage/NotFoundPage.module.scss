@@ -1,20 +1,19 @@
 .root {
-  @apply w-full h-screen grid place-items-center;
+	@apply grid h-screen w-full place-items-center;
 
-  .content {
-    @apply text-center;
-  }
+	.content {
+		@apply text-center;
+	}
 
-  .title {
-    @apply text-5xl font-semibold text-primary mb-2;
-  }
+	.title {
+		@apply mb-2 text-5xl font-semibold text-primary;
+	}
 
-  .subtitle {
-    @apply text-lg text-gray-dark mb-6;
-  }
+	.subtitle {
+		@apply mb-6 text-lg text-gray-dark;
+	}
 
-  .link {
-    @apply text-base font-medium text-gray-dark underline underline-offset-4
-    hover:text-gray-dark/75 transition-colors;
-  }
+	.link {
+		@apply text-base font-medium text-gray-dark underline underline-offset-4 transition-colors hover:text-gray-dark/75;
+	}
 }

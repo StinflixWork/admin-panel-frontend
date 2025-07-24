@@ -1,7 +1,7 @@
 .root {
-  @apply flex flex-col gap-y-6;
+	@apply flex flex-col gap-y-6;
 
-  .header {
-    @apply flex items-center justify-between;
-  }
+	.header {
+		@apply flex items-center justify-between;
+	}
 }

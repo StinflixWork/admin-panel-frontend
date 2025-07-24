@@ -83,14 +83,14 @@ export const AppDropzone = ({ picture, setFile }: DropzoneProps) => {
 						<UploadCloud />
 					</div>
 					<div className='text-center'>
-						<p className='text-sm text-primary font-medium'>Натисніть, щоб завантажити</p>
+						<p className='text-sm font-medium text-primary'>Натисніть, щоб завантажити</p>
 						<p className='text-sm text-[#667085]'>або перетягніть</p>
 						<p className='text-[12px] text-[#667085]'>JPG, PNG (max. 344x194px)</p>
 					</div>
 				</div>
 				{preview && (
 					<div className={styles.preview}>
-						<img src={preview} className='w-full h-full object-cover' alt='preview' />
+						<img src={preview} className='h-full w-full object-cover' alt='preview' />
 					</div>
 				)}
 			</div>
@@ -99,7 +99,7 @@ export const AppDropzone = ({ picture, setFile }: DropzoneProps) => {
 					<Trash2 />
 				</button>
 			)}
-			{error && <p className='text-sm text-red-500 mt-2'>{error}</p>}
+			{error && <p className='mt-2 text-sm text-red-500'>{error}</p>}
 		</div>
 	)
 }

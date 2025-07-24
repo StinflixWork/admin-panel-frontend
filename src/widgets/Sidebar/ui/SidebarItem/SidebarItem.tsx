@@ -7,12 +7,7 @@ export const SidebarItem = (props: TypeSidebar) => {
 	const { label, href, Icon } = props
 
 	return (
-		<NavLink
-			to={href}
-			className={({ isActive }) =>
-				cn(styles.root, { [styles.active]: isActive })
-			}
-		>
+		<NavLink to={href} className={({ isActive }) => cn(styles.root, { [styles.active]: isActive })}>
 			<Icon size={24} />
 			<span className={styles.link}>{label}</span>
 		</NavLink>

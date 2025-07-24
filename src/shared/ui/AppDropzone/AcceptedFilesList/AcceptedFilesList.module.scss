@@ -1,15 +1,15 @@
 .root {
-  @apply flex flex-col gap-y-2;
+	@apply flex flex-col gap-y-2;
 
-  .pictureItem {
-    @apply flex justify-between items-center;
-  }
+	.pictureItem {
+		@apply flex items-center justify-between;
+	}
 
-  .removePictureButton {
-    @apply w-6 h-6 grid place-items-center transition-colors;
+	.removePictureButton {
+		@apply grid h-6 w-6 place-items-center transition-colors;
 
-    &:hover {
-      @apply text-red-basic;
-    }
-  }
+		&:hover {
+			@apply text-red-basic;
+		}
+	}
 }

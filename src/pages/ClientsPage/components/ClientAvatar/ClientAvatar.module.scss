@@ -1,13 +1,11 @@
 .root {
-  @apply relative w-full h-[280px];
+	@apply relative h-[280px] w-full;
 
-  .avatar {
-    @apply w-full h-full object-cover;
-  }
+	.avatar {
+		@apply h-full w-full object-cover;
+	}
 
-  .deleteButton {
-    @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 z-10 grid place-items-center
-    bg-white border border-solid border-[#E4E7EC] rounded-lg
-    hover:bg-neutral-100 transition-colors outline-none active:bg-neutral-200;
-  }
+	.deleteButton {
+		@apply absolute left-1/2 top-1/2 z-10 grid h-10 w-10 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-lg border border-solid border-[#E4E7EC] bg-white outline-none transition-colors hover:bg-neutral-100 active:bg-neutral-200;
+	}
 }
