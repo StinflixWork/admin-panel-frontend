@@ -1,6 +1,23 @@
 .root {
 	@apply flex flex-col gap-y-1;
 
+	.label {
+		color: theme('colors.gray.dark') !important;
+	}
+
+	.inputWrapper {
+		@apply bg-white border border-solid border-gray-light shadow-none;
+
+		&:focus-within{
+			@apply bg-white border-primary;
+		}
+	}
+
+	.input {
+		@apply placeholder:text-gray-400;
+		color: theme('colors.gray.dark') !important;
+	}
+
 	.error {
 		@apply text-xs text-red-basic;
 	}

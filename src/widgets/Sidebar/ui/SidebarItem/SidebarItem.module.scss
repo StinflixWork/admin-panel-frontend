@@ -1,11 +1,11 @@
 .root {
-	@apply flex items-center gap-x-2 rounded p-1.5 text-gray-dark transition-colors hover:bg-gray-light;
+	@apply flex items-center gap-x-3 rounded-lg p-2.5 text-green-brand transition-colors hover:bg-[#E3F0FD];
 
 	.link {
-		@apply text-lg;
+		@apply text-base font-medium;
 	}
 
 	&.active {
-		@apply bg-gray-light;
+		@apply bg-primary text-white;
 	}
 }

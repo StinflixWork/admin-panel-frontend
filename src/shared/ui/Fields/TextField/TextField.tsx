@@ -11,7 +11,17 @@ export const TextField = (props: TextFieldProps) => {
 
 	return (
 		<div className={styles.root}>
-			<Input radius='sm' labelPlacement='outside' placeholder={placeholder} {...rest} />
+			<Input
+				radius='sm'
+				labelPlacement='outside'
+				placeholder={placeholder}
+				classNames={{
+					label: styles.label,
+					inputWrapper: styles.inputWrapper,
+					input: styles.input
+				}}
+				{...rest}
+			/>
 			{error && <span className={styles.error}>{error}</span>}
 		</div>
 	)

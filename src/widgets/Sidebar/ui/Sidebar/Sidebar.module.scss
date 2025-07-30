@@ -1,5 +1,5 @@
 .root {
-	@apply flex h-full w-sidebar flex-col gap-y-10 bg-white px-3 py-8;
+	@apply flex h-full w-sidebar flex-col gap-y-10 bg-white px-7 py-9 shadow-blue-light;
 
 	.logo {
 		@apply flex items-center gap-x-2;
@@ -17,7 +17,7 @@
 		@apply flex h-full flex-col;
 
 		.list {
-			@apply flex flex-auto flex-col gap-y-3;
+			@apply flex flex-auto flex-col gap-y-4;
 		}
 	}
 }

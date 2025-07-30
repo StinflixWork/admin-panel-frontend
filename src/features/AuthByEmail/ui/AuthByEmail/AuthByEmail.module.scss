@@ -1,5 +1,5 @@
 .root {
-	@apply flex flex-col justify-center gap-y-12 rounded-lg bg-white px-6 py-8;
+	@apply flex flex-col justify-center gap-y-12 rounded-lg bg-white shadow-blue-light px-6 py-8;
 	width: 480px;
 
 	.headline {

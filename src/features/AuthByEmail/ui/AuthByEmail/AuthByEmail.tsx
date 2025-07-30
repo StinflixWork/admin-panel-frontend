@@ -8,15 +8,15 @@ import { AppButton } from '@/shared/ui/AppButton'
 import { PasswordField } from '@/shared/ui/Fields/PasswordField'
 import { TextField } from '@/shared/ui/Fields/TextField'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { defaultAuthValues } from '../../config/defaultAuthValues.ts'
 import { AuthFormFieldsType, validationAuthValues } from '../../config/validationAuthValues.ts'
 import styles from './AuthByEmail.module.scss'
 
-// Додати вивід помилок під інпути
-// Винести інпути в шерід
 export const AuthByEmail = () => {
-	const { register, handleSubmit } = useForm<AuthFormFieldsType>({
-		defaultValues: defaultAuthValues,
+	const {
+		register,
+		handleSubmit,
+		formState: { errors }
+	} = useForm<AuthFormFieldsType>({
 		resolver: yupResolver(validationAuthValues)
 	})
 
@@ -51,8 +51,14 @@ export const AuthByEmail = () => {
 			<h1 className={styles.headline}>OneTouch | Admin</h1>
 			<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
 				<div className={styles.wrapperFields}>
-					<TextField label='Email' placeholder='Введіть email' {...register('email')} isRequired />
-					<PasswordField {...register('password')} isRequired />
+					<TextField
+						label='Email'
+						placeholder='Введіть email'
+						error={errors.email?.message}
+						isRequired
+						{...register('email')}
+					/>
+					<PasswordField error={errors.password?.message} {...register('password')} isRequired />
 				</div>
 				<AppButton type='submit'>Увійти</AppButton>
 			</form>

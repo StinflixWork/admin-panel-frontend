@@ -1,11 +1,9 @@
 .root {
-	@apply bg-gray-light text-lg;
+	@apply border-b border-solid border-gray-secondary;
 
 	.row {
-		@apply border border-solid border-gray-state;
-
 		.cell {
-			@apply p-2;
+			@apply text-base text-green-brand font-medium py-4 px-8 align-middle leading-none;
 		}
 	}
 }

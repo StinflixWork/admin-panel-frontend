@@ -9,8 +9,6 @@ interface PasswordFieldProps extends Omit<InputProps, 'label' | 'placeholder'> {
 }
 
 export const PasswordField = (props: PasswordFieldProps) => {
-	const { error, ...inputProps } = props
-
 	const [isVisible, setIsVisible] = useState(false)
 	const toggleVisibility = () => setIsVisible(!isVisible)
 
@@ -30,9 +28,8 @@ export const PasswordField = (props: PasswordFieldProps) => {
 						)}
 					</button>
 				}
-				{...inputProps}
+				{...props}
 			/>
-			{error && <span className={styles.error}>{error}</span>}
 		</div>
 	)
 }

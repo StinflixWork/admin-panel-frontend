@@ -1,7 +1,11 @@
 .root {
 	@apply relative overflow-x-auto overflow-y-hidden;
 
+	&.shadow {
+		@apply shadow-blue-light;
+	}
+
 	.table {
-		@apply w-full text-left text-gray-dark;
+		@apply w-full text-left bg-white;
 	}
 }

@@ -26,9 +26,9 @@ export const ContainerTable = <T,>(props: ContainerTableProps<T>) => {
 					onPaginationChange: setPagination
 				}}
 			/>
-			{pageTotal > 1 && (
+			<div className='border-t border-solid border-gray-secondary'>
 				<TableFooter total={pageTotal} pagination={pagination} setPagination={setPagination} />
-			)}
+			</div>
 		</div>
 	)
 }
