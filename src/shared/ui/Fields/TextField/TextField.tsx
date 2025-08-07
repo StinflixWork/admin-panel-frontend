@@ -1,4 +1,4 @@
-import { Input, InputProps } from '@heroui/input'
+import { Input, InputProps } from '@heroui/react'
 import styles from './TextField.module.scss'
 
 interface TextFieldProps extends InputProps {

@@ -1,5 +1,5 @@
 .root {
-  @apply relative;
+  position: relative;
 
   &:before {
     content: '';
@@ -10,10 +10,10 @@
     width: 8px;
     height: 8px;
     border-radius: 100%;
-    background-color: theme('colors.red.basic');
+    background-color: var(--color-red-basic);
+  }
 
-    &.active {
-      @apply bg-green-500;
-    }
+  &.active::before {
+    background-color: green;
   }
 }

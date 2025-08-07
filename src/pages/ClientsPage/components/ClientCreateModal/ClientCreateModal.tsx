@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useDisclosure } from '@heroui/modal'
+import { useDisclosure } from '@heroui/react'
 import { useCreateClientMutation } from '@/entities/Client'
 import { ClientCreateForm } from '@/pages/ClientsPage/components/ClientCreateForm'
 import { AppButton } from '@/shared/ui/AppButton'

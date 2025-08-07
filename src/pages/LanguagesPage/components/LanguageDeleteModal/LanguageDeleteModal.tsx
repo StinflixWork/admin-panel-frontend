@@ -3,7 +3,6 @@ import { useDeleteLanguageMutation } from '@/entities/Language'
 import { AppButton } from '@/shared/ui/AppButton'
 import { AppModal } from '@/shared/ui/Modals'
 import { Trash2 } from 'lucide-react'
-import styles from './LanguageDeleteModal.module.scss'
 
 interface LanguageDeleteModalProps {
 	languageId: string
@@ -24,8 +23,8 @@ export const LanguageDeleteModal = ({ languageId }: LanguageDeleteModalProps) =>
 	}
 
 	return (
-		<div className={styles.root}>
-			<button className={styles.iconButton} onClick={onOpen}>
+		<>
+			<button className='hover:bg-gray-light rounded p-1 transition-colors' onClick={onOpen}>
 				<Trash2 className='text-red-basic' size={24} />
 			</button>
 			<AppModal title='Видалення мови' isOpen={isOpen} onOpenChange={onOpenChange}>
@@ -41,6 +40,6 @@ export const LanguageDeleteModal = ({ languageId }: LanguageDeleteModalProps) =>
 					</div>
 				</div>
 			</AppModal>
-		</div>
+		</>
 	)
 }

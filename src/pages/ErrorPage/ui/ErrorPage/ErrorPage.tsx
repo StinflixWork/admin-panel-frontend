@@ -1,9 +1,9 @@
-import styles from './ErrorPage.module.scss'
-
 const ErrorPage = () => {
 	return (
-		<section className={styles.root}>
-			<p className={styles.title}>При загрузці даних, сталась помилка</p>
+		<section className='grid h-screen w-full place-items-center'>
+			<p className='text-gray-dark/40 text-3xl font-semibold'>
+				При загрузці даних, сталась помилка
+			</p>
 		</section>
 	)
 }

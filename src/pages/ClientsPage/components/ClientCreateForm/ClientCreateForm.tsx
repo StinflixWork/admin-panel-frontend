@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form'
-import { Checkbox } from '@heroui/checkbox'
+import { Checkbox } from '@heroui/react'
 import {
 	ClientCreateFormFieldsType,
 	clientCreateFormSchema
@@ -9,7 +9,6 @@ import { AppDropzone } from '@/shared/ui/AppDropzone'
 import { PasswordField } from '@/shared/ui/Fields/PasswordField'
 import { TextField } from '@/shared/ui/Fields/TextField'
 import { yupResolver } from '@hookform/resolvers/yup'
-import styles from './ClientCreateForm.module.scss'
 
 interface ClientCreateFormProps {
 	onSubmit: (formFields: ClientCreateFormFieldsType) => void
@@ -30,8 +29,8 @@ export const ClientCreateForm = (props: ClientCreateFormProps) => {
 	})
 
 	return (
-		<form className={styles.root} onSubmit={handleSubmit(onSubmit)}>
-			<div className={styles.fields}>
+		<form className='flex flex-col gap-y-6' onSubmit={handleSubmit(onSubmit)}>
+			<div className='flex flex-col gap-y-4'>
 				<AppDropzone picture={null} setFile={setFile} />
 				<TextField
 					label='Назва CRM системи'
@@ -85,7 +84,7 @@ export const ClientCreateForm = (props: ClientCreateFormProps) => {
 				/>
 				<Checkbox {...register('active')}>Активний</Checkbox>
 			</div>
-			<div className={styles.actions}>
+			<div className='flex items-center gap-x-4'>
 				<AppButton onPress={onCloseModal} variant='outline' color='danger' type='button' fullWidth>
 					Скасувати
 				</AppButton>

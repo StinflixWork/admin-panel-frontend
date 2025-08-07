@@ -1,4 +1,4 @@
-import { Modal, ModalBody, ModalContent, ModalHeader, ModalProps } from '@heroui/modal'
+import { Modal, ModalBody, ModalContent, ModalHeader, ModalProps } from '@heroui/react'
 import styles from './AppModal.module.scss'
 
 interface AppModalProps extends ModalProps {

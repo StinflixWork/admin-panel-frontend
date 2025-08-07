@@ -1,11 +1,23 @@
 .root {
-	@apply flex items-center gap-x-3 rounded-lg p-2.5 text-green-brand transition-colors hover:bg-[#E3F0FD];
+	display: flex;
+	align-items: center;
+	column-gap: 12px;
+	border-radius: 8px;
+	padding: 10px;
+	color: var(--color-green-brand);
+	transition: background-color .3s ease-in-out;
+
+	&:hover {
+		background-color: #E3F0FD;
+	}
 
 	.link {
-		@apply text-base font-medium;
+		font-size: 1rem;
+		font-weight: 500;
 	}
 
 	&.active {
-		@apply bg-primary text-white;
+		background-color: var(--color-primary);
+		color: #fff;
 	}
 }

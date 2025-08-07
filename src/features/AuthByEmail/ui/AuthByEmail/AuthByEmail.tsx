@@ -1,6 +1,6 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router'
-import { addToast } from '@heroui/toast'
+import { addToast } from '@heroui/react'
 import { adminActions, useLoginMutation } from '@/entities/Admin'
 import { AppRoutes } from '@/shared/constants/routes'
 import { useAppDispatch } from '@/shared/libs/hooks/useStore.ts'
@@ -9,7 +9,6 @@ import { PasswordField } from '@/shared/ui/Fields/PasswordField'
 import { TextField } from '@/shared/ui/Fields/TextField'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { AuthFormFieldsType, validationAuthValues } from '../../config/validationAuthValues.ts'
-import styles from './AuthByEmail.module.scss'
 
 export const AuthByEmail = () => {
 	const {
@@ -47,10 +46,10 @@ export const AuthByEmail = () => {
 	}
 
 	return (
-		<div className={styles.root}>
-			<h1 className={styles.headline}>OneTouch | Admin</h1>
-			<form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-				<div className={styles.wrapperFields}>
+		<div className='shadow-blue-light flex w-[480px] flex-col justify-center gap-y-12 rounded-lg bg-white px-6 py-8'>
+			<h1 className='text-gray-dark text-center text-3xl font-semibold'>OneTouch | Admin</h1>
+			<form className='flex flex-col gap-y-8' onSubmit={handleSubmit(onSubmit)}>
+				<div className='flex flex-col gap-y-6'>
 					<TextField
 						label='Email'
 						placeholder='Введіть email'

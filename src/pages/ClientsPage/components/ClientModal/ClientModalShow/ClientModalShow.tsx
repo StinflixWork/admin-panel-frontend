@@ -2,7 +2,6 @@ import { IClientResource } from '@/entities/Client'
 import { AppButton } from '@/shared/ui/AppButton'
 import { InfoField } from '@/shared/ui/Fields/InfoField'
 import { ClientAvatar } from '../../ClientAvatar'
-import styles from './ClientModalShow.module.scss'
 
 interface ClientModalShowProps {
 	data: IClientResource
@@ -11,7 +10,7 @@ interface ClientModalShowProps {
 
 export const ClientModalShow = ({ data, onClickEdit }: ClientModalShowProps) => {
 	return (
-		<div className={styles.root}>
+		<div className='flex flex-col gap-y-4'>
 			<ClientAvatar clientId={data.id} picture={data.picture} />
 			<InfoField title='Назва CRM системи' value={data.name} />
 			<InfoField title='СУБД' value={data.connection.connection} />

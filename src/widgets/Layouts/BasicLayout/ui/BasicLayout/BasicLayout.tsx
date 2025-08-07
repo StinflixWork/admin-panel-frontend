@@ -1,6 +1,5 @@
 import { PropsWithChildren } from 'react'
-import styles from './BasicLayout.module.scss'
 
 export const BasicLayout = ({ children }: PropsWithChildren) => {
-	return <main className={styles.root}>{children}</main>
+	return <main className='h-screen w-full overflow-x-hidden'>{children}</main>
 }

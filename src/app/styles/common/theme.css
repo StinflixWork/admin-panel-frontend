@@ -1,0 +1,46 @@
+@import "tailwindcss";
+@plugin '../lib/hero.ts';
+@source '../../../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+
+@theme {
+    --font-poppins: 'Poppins';
+    --font-inter: 'Inter';
+
+    --color-primary: #2891f2;
+    --color-gray-basic: #8e8e93;
+    --color-gray-state: #d3e5f5;
+    --color-gray-light: #f2f2f7;
+    --color-gray-dark: #1c1c1e;
+    --color-gray-secondary: #eeeeee;
+    --color-red-basic: #ef1111;
+    --color-green-brand: #058A8A;
+
+    --shadow-blue-light: 0 10px 60px 0 rgba(226,236,249,0.5);
+
+    --width-sidebar: 306px;
+}
+
+@layer base {
+    * {
+        &::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: transparent;
+            border-radius: 32px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--color-gray-300);
+            border-radius: 8px 0 0 8px;
+        }
+    }
+}
+
+@utility section {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+}

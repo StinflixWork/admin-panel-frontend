@@ -1,7 +1,16 @@
 .row {
-	@apply border-b border-solid border-[#EEEEEE] last:border-0;
+	border-bottom: 1px solid var(--color-gray-secondary);
+	&:last-child {
+		border-bottom: none;
+	}
 
 	.cell {
-		@apply text-sm font-medium text-gray-dark py-3 px-8 align-middle leading-none;
+		font-size: 14px;
+		font-weight: 500;
+		color: var(--color-gray-dark);
+		padding-inline: 12px;
+		padding-block: 32px;
+		vertical-align: middle;
+		line-height: 1;
 	}
 }

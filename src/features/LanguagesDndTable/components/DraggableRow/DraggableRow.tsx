@@ -3,7 +3,6 @@ import { ILanguageResource } from '@/entities/Language'
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import { Row, flexRender } from '@tanstack/react-table'
-import styles from './DraggableRow.module.scss'
 
 interface DraggableRowProps {
 	row: Row<ILanguageResource>
@@ -23,9 +22,9 @@ export const DraggableRow = ({ row }: DraggableRowProps) => {
 	}
 
 	return (
-		<tr ref={setNodeRef} style={style} className={styles.row}>
+		<tr ref={setNodeRef} style={style} className='border-gray-state border border-solid'>
 			{row.getVisibleCells().map(cell => (
-				<td key={cell.id} className={styles.cell}>
+				<td key={cell.id} className='p-2 first:w-10'>
 					{flexRender(cell.column.columnDef.cell, cell.getContext())}
 				</td>
 			))}

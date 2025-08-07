@@ -1,5 +1,5 @@
-import { Button, ButtonProps } from '@heroui/button'
-import { cn } from '@heroui/theme'
+import { Button, ButtonProps } from '@heroui/react'
+import { clsx } from 'clsx'
 import styles from './AppButton.module.scss'
 import {
 	ButtonColors,
@@ -26,7 +26,7 @@ export const AppButton = (props: AppButtonProps) => {
 	return (
 		<Button
 			radius='sm'
-			className={cn(styles.root, styles[variant], styles[color], className)}
+			className={clsx(styles.root, styles[variant], styles[color], className)}
 			{...buttonProps}
 		>
 			{children}

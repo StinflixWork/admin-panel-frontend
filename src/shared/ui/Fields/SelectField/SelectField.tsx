@@ -1,5 +1,4 @@
 import { Select, SelectItem, SelectProps } from '@heroui/select'
-import styles from './SelectField.module.scss'
 
 type SelectOptionType = {
 	key: string | number
@@ -15,7 +14,7 @@ export const SelectField = (props: SelectFieldProps) => {
 	const { error, placeholder = 'Оберіть значення', items = [], ...rest } = props
 
 	return (
-		<div className={styles.root}>
+		<div className='flex flex-col gap-y-1'>
 			<Select
 				radius='sm'
 				placeholder={placeholder}
@@ -25,7 +24,7 @@ export const SelectField = (props: SelectFieldProps) => {
 			>
 				{items => <SelectItem>{items.label}</SelectItem>}
 			</Select>
-			{error && <span className={styles.error}>{error}</span>}
+			{error && <span className='text-red-basic text-xs'>{error}</span>}
 		</div>
 	)
 }

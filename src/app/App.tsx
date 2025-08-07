@@ -1,13 +1,12 @@
-import { HeroUIProvider } from '@heroui/system'
-import { ToastProvider } from '@heroui/toast'
+import { ToastProvider } from '@heroui/react'
 import { RouterProvider } from './providers/RouterProvider'
 
 function App() {
 	return (
-		<HeroUIProvider>
+		<>
 			<ToastProvider placement='top-right' toastOffset={10} />
 			<RouterProvider />
-		</HeroUIProvider>
+		</>
 	)
 }
 

@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { Checkbox } from '@heroui/checkbox'
+import { Checkbox } from '@heroui/react'
 import { ILanguageCredentials } from '@/entities/Language/api/languageType.ts'
 import { AppButton } from '@/shared/ui/AppButton'
 import { SelectField } from '@/shared/ui/Fields/SelectField'
@@ -8,7 +8,6 @@ import { TextField } from '@/shared/ui/Fields/TextField'
 import { yupResolver } from '@hookform/resolvers/yup'
 import isoLang from 'iso-639-1'
 import { LanguageFormFieldsType, languageSchema } from '../../config/languageFormSchema'
-import styles from './LanguageForm.module.scss'
 
 interface LanguageFormProps {
 	onClose: () => void
@@ -56,8 +55,8 @@ export const LanguageForm = (props: LanguageFormProps) => {
 	}, [isEdit, languageData, reset])
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit)} className={styles.root}>
-			<div className={styles.fields}>
+		<form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-y-6'>
+			<div className='flex flex-col gap-y-4'>
 				<TextField
 					label='Назва'
 					placeholder='Введіть назву мови'
@@ -72,7 +71,7 @@ export const LanguageForm = (props: LanguageFormProps) => {
 				/>
 				<Checkbox {...register('active')}>Активний</Checkbox>
 			</div>
-			<div className={styles.actions}>
+			<div className='flex items-center gap-x-4'>
 				<AppButton onPress={onClose} variant='outline' color='danger' type='button' fullWidth>
 					Скасувати
 				</AppButton>

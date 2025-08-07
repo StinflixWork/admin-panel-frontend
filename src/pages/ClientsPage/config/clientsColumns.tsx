@@ -1,8 +1,9 @@
 import { IClientResource } from '@/entities/Client'
-import { ClientsTableActions } from '@/pages/ClientsPage/components/ClientsTableActions'
 import { StatusBadge } from '@/shared/ui/StatusBadge'
-import { PictureCell } from '@/shared/ui/Table'
+import { ActionsCell, PictureCell } from '@/shared/ui/Table'
 import { ColumnDef } from '@tanstack/react-table'
+import { ClientDeleteModal } from '../components/ClientDeleteModal'
+import { ClientModal } from '../components/ClientModal'
 
 export const clientsColumns: ColumnDef<IClientResource>[] = [
 	{
@@ -28,6 +29,11 @@ export const clientsColumns: ColumnDef<IClientResource>[] = [
 	{
 		id: 'actions',
 		header: 'Керування',
-		cell: ({ row }) => <ClientsTableActions clientId={row.original.id} />
+		cell: ({ row }) => (
+			<ActionsCell>
+				<ClientModal clientId={row.original.id} />
+				<ClientDeleteModal clientId={row.original.id} />
+			</ActionsCell>
+		)
 	}
 ]

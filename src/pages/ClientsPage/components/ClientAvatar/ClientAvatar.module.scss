@@ -1,11 +1,36 @@
 .root {
-	@apply relative h-[280px] w-full;
+	position: relative;
+	height: 280px;
+	width: 100%;
 
 	.avatar {
-		@apply h-full w-full object-cover;
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
 	}
 
 	.deleteButton {
-		@apply absolute left-1/2 top-1/2 z-10 grid h-10 w-10 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-lg border border-solid border-[#E4E7EC] bg-white outline-none transition-colors hover:bg-neutral-100 active:bg-neutral-200;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		z-index: 10;
+		display: grid;
+		width: 40px;
+		height: 40px;
+		transform: translate(-50%, -50%);
+		place-items: center;
+		border-radius: 8px;
+		border: 1px solid #E4E7EC;
+		background-color: #fff;
+		outline: none;
+		transition: all .3s ease-in-out;
+
+		&:hover {
+			background-color: rgba(255, 255, 255, .75);
+		}
+
+		&:active {
+			background-color: #fff;
+		}
 	}
 }

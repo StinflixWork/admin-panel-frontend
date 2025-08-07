@@ -1,5 +1,3 @@
-import styles from './InfoField.module.scss'
-
 interface InfoFieldProps {
 	title: string
 	value: string | number | null
@@ -7,9 +5,9 @@ interface InfoFieldProps {
 
 export const InfoField = ({ title, value }: InfoFieldProps) => {
 	return (
-		<div className={styles.root}>
-			<h3 className={styles.title}>{title}</h3>
-			<p className={styles.value}>{value}</p>
+		<div className='flex flex-col'>
+			<h3 className='text-green-brand text-base font-medium'>{title}</h3>
+			<p className='text-lg'>{value}</p>
 		</div>
 	)
 }

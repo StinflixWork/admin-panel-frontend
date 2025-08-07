@@ -1,0 +1,7 @@
+@import "./common/theme.css";
+
+body {
+	font-family: var(--font-poppins), sans-serif;
+	background-color: #FAFBFF;
+}
+

@@ -1,9 +1,8 @@
-import { useDisclosure } from '@heroui/modal'
+import { useDisclosure } from '@heroui/react'
 import { useDeleteClientByIdMutation } from '@/entities/Client'
 import { AppButton } from '@/shared/ui/AppButton'
 import { AppModal } from '@/shared/ui/Modals'
 import { Trash2 } from 'lucide-react'
-import styles from './ClientDeleteModal.module.scss'
 
 interface ClientDeleteModalProps {
 	clientId: string
@@ -24,8 +23,8 @@ export const ClientDeleteModal = ({ clientId }: ClientDeleteModalProps) => {
 	}
 
 	return (
-		<div className={styles.root}>
-			<button className={styles.iconButton} onClick={onOpen}>
+		<>
+			<button className='hover:bg-gray-light rounded p-1 transition-colors' onClick={onOpen}>
 				<Trash2 className='text-red-basic' size={24} />
 			</button>
 			<AppModal title='Видалення користувача' isOpen={isOpen} onOpenChange={onOpenChange}>
@@ -41,6 +40,6 @@ export const ClientDeleteModal = ({ clientId }: ClientDeleteModalProps) => {
 					</div>
 				</div>
 			</AppModal>
-		</div>
+		</>
 	)
 }

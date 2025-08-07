@@ -3,7 +3,6 @@ import { useGetClientByIdQuery } from '@/entities/Client'
 import { CardSkeleton } from '@/shared/ui/Skeletons'
 import { ClientModalEdit } from '../ClientModalEdit'
 import { ClientModalShow } from '../ClientModalShow'
-import styles from './ClientModalContent.module.scss'
 
 interface ClientModalContentProps {
 	clientId: string
@@ -24,13 +23,9 @@ export const ClientModalContent = ({ clientId }: ClientModalContentProps) => {
 		return <div>No Data</div>
 	}
 
-	return (
-		<div className={styles.root}>
-			{!isEdit ? (
-				<ClientModalShow data={data} onClickEdit={handleShowEdit} />
-			) : (
-				<ClientModalEdit data={data} onClickEdit={handleCloseEdit} />
-			)}
-		</div>
+	return isEdit ? (
+		<ClientModalEdit data={data} onClickEdit={handleCloseEdit} />
+	) : (
+		<ClientModalShow data={data} onClickEdit={handleShowEdit} />
 	)
 }

@@ -7,7 +7,6 @@ import { TextField } from '@/shared/ui/Fields/TextField'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { clientDto } from '../../config/clientDto.ts'
 import { ClientFormFieldsType, clientFormSchema } from '../../config/clientFormSchema.ts'
-import styles from './ClientForm.module.scss'
 
 interface ClientFormProps {
 	initialValues: IClientResource
@@ -30,8 +29,8 @@ export const ClientForm = (props: ClientFormProps) => {
 	})
 
 	return (
-		<form className={styles.root} onSubmit={handleSubmit(onSubmit)}>
-			<div className={styles.fields}>
+		<form className='flex flex-col gap-y-6' onSubmit={handleSubmit(onSubmit)}>
+			<div className='flex flex-col gap-y-4'>
 				<AppDropzone picture={initialValues.picture} setFile={setFile} />
 				<TextField
 					label='Назва CRM системи'
@@ -78,7 +77,7 @@ export const ClientForm = (props: ClientFormProps) => {
 					{...register('port')}
 				/>
 			</div>
-			<div className={styles.actions}>
+			<div className='flex items-center gap-x-4'>
 				<AppButton onPress={onCloseModal} variant='outline' color='danger' type='button' fullWidth>
 					Скасувати
 				</AppButton>

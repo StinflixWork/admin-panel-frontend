@@ -1,6 +1,5 @@
-import { Pagination } from '@heroui/pagination'
+import { Pagination } from '@heroui/react'
 import { OnChangeFn, PaginationState } from '@tanstack/react-table'
-import styles from './TableFooter.module.scss'
 
 interface TableFooterProps {
 	total: number
@@ -10,7 +9,7 @@ interface TableFooterProps {
 
 export const TableFooter = ({ total, pagination, setPagination }: TableFooterProps) => {
 	return (
-		<div className={styles.root}>
+		<div className='mt-2.5 flex justify-center py-1'>
 			<Pagination
 				size='sm'
 				total={total}

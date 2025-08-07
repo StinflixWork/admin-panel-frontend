@@ -5,12 +5,12 @@ import { AppLoader } from '@/shared/ui/AppLoader'
 import { ContainerTable } from '@/shared/ui/Table'
 import { ClientCreateModal } from '../../components/ClientCreateModal'
 import { clientsColumns } from '../../config/clientsColumns.tsx'
-import styles from './ClientsPage.module.scss'
 
 const ClientsPage = () => {
 	const { pagination, setPagination } = useQueryPagination()
 
 	const { data, isLoading } = useGetClientsQuery(pagination)
+
 	if (isLoading) {
 		return <AppLoader />
 	}
@@ -19,11 +19,10 @@ const ClientsPage = () => {
 		return <ErrorPage />
 	}
 
-	// зробити контейнер для секкції, і зробити контейнер для шапки
 	return (
-		<section className={styles.root}>
-			<div className={styles.header}>
-				<h2 className='text-3xl font-semibold text-gray-dark'>Клієнти</h2>
+		<section className='section'>
+			<div className='flex items-center justify-between'>
+				<h2 className='text-gray-dark text-3xl font-semibold'>Клієнти</h2>
 				<ClientCreateModal />
 			</div>
 			<ContainerTable

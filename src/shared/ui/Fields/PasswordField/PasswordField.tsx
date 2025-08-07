@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { InputProps } from '@heroui/input'
+import { InputProps } from '@heroui/react'
 import { Eye, EyeOff } from 'lucide-react'
 import { TextField } from '../TextField'
 import styles from './PasswordField.module.scss'
@@ -13,23 +13,21 @@ export const PasswordField = (props: PasswordFieldProps) => {
 	const toggleVisibility = () => setIsVisible(!isVisible)
 
 	return (
-		<div className={styles.root}>
-			<TextField
-				label='Пароль'
-				placeholder='Введіть пароль'
-				type={isVisible ? 'text' : 'password'}
-				autoComplete='new-password'
-				endContent={
-					<button aria-label='toggle password visibility' type='button' onClick={toggleVisibility}>
-						{isVisible ? (
-							<EyeOff className={styles.hiddenIcon} />
-						) : (
-							<Eye className={styles.hiddenIcon} />
-						)}
-					</button>
-				}
-				{...props}
-			/>
-		</div>
+		<TextField
+			label='Пароль'
+			placeholder='Введіть пароль'
+			type={isVisible ? 'text' : 'password'}
+			autoComplete='new-password'
+			endContent={
+				<button aria-label='toggle password visibility' type='button' onClick={toggleVisibility}>
+					{isVisible ? (
+						<EyeOff className={styles.hiddenIcon} />
+					) : (
+						<Eye className={styles.hiddenIcon} />
+					)}
+				</button>
+			}
+			{...props}
+		/>
 	)
 }

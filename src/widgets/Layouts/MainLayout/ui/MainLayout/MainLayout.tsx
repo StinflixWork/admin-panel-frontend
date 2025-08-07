@@ -1,12 +1,11 @@
 import { PropsWithChildren } from 'react'
 import { Sidebar } from '@/widgets/Sidebar'
-import styles from './MainLayout.module.scss'
 
 export const MainLayout = ({ children }: PropsWithChildren) => {
 	return (
-		<div className={styles.root}>
+		<div className='flex h-screen'>
 			<Sidebar />
-			<main className={styles.content}>{children}</main>
+			<main className='flex-auto overflow-x-hidden px-12 py-6'>{children}</main>
 		</div>
 	)
 }

@@ -2,7 +2,6 @@ import { IApiResponseWithMeta } from '@/shared/types/common.ts'
 import { ColumnDef, OnChangeFn, PaginationState } from '@tanstack/react-table'
 import { TableFooter } from '../../components'
 import { Table } from '../Table'
-import styles from './ContainerTable.module.scss'
 
 interface ContainerTableProps<TData> {
 	tableData: IApiResponseWithMeta<TData> | undefined
@@ -16,7 +15,7 @@ export const ContainerTable = <T,>(props: ContainerTableProps<T>) => {
 	const pageTotal = tableData?.meta.page.total ?? 0
 
 	return (
-		<div className={styles.root}>
+		<div className='shadow-blue-light overflow-hidden rounded-lg bg-white pb-4'>
 			<Table
 				data={tableData?.data}
 				columns={columns}
@@ -26,7 +25,7 @@ export const ContainerTable = <T,>(props: ContainerTableProps<T>) => {
 					onPaginationChange: setPagination
 				}}
 			/>
-			<div className='border-t border-solid border-gray-secondary'>
+			<div className='border-gray-secondary border-t border-solid'>
 				<TableFooter total={pageTotal} pagination={pagination} setPagination={setPagination} />
 			</div>
 		</div>

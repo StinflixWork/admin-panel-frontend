@@ -1,11 +1,15 @@
 .root {
-	@apply relative overflow-x-auto overflow-y-hidden;
+	position: relative;
+	overflow-x: auto;
+	overflow-y: hidden;
 
 	&.shadow {
-		@apply shadow-blue-light;
+		box-shadow: var(--shadow-blue-light);
 	}
 
 	.table {
-		@apply w-full text-left bg-white;
+		width: 100%;
+		text-align: left;
+		background-color: #fff;
 	}
 }

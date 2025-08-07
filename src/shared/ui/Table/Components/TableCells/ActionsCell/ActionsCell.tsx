@@ -1,6 +1,5 @@
 import { PropsWithChildren } from 'react'
-import styles from './ActionsCell.module.scss'
 
 export const ActionsCell = ({ children }: PropsWithChildren) => {
-	return <div className={styles.root}>{children}</div>
+	return <div className='flex items-center gap-x-2'>{children}</div>
 }

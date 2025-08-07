@@ -1,23 +1,32 @@
 .root {
-	@apply relative overflow-x-auto overflow-y-hidden;
+	position: relative;
+	overflow-x: auto;
+	overflow-y: hidden;
 
 	.table {
-		@apply w-full text-left text-gray-dark;
+		width: 100%;
+		text-align: left;
+		color: var(--color-gray-dark);
 	}
 
 	.row {
-		@apply border border-solid border-gray-state;
+		border: 1px solid var(--color-gray-state);
 
 		.cell {
-			@apply p-2 first:w-10;
+			padding: 8px;
+
+			&:first-child {
+				width: 40px;
+			}
 		}
 	}
 
 	.header {
-		@apply bg-gray-light text-lg;
+		background-color: var(--color-gray-light);
+		font-size: 18px;
 	}
 
 	.body {
-		@apply text-base;
+		font-size: 1rem;
 	}
 }
