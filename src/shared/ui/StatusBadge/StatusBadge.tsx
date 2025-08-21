@@ -6,7 +6,7 @@ interface StatusBadgeProps {
 }
 
 export const StatusBadge = ({ value }: StatusBadgeProps) => {
-	const isActive = typeof value === 'boolean' ? value : !value
+	const isActive = !!value
 
 	return (
 		<div className={clsx(styles.root, { [styles.active]: isActive })}>

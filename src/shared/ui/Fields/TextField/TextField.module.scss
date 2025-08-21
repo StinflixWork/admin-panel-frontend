@@ -4,23 +4,23 @@
 	row-gap: 4px;
 
 	.label {
-		color: var(--color-gray-dark) !important;
+		color: #333333 !important;
 	}
 
 	.inputWrapper {
 		background-color: #fff;
-		border: 1px solid var(--color-primary);
+		border: 1px solid #bdbdbd;
 		box-shadow: none;
 
 		&:focus-within{
 			background-color: #fff;
-			border-color: var(--color-primary);
+			border-color: #828282;
 		}
 	}
 
 	.input {
 		&::placeholder {
-			color: var(--color-gray-basic) !important;
+			color: #828282 !important;
 			opacity: .5;
 		}
 	}
