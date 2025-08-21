@@ -2,18 +2,22 @@
 	position: relative;
 	overflow-x: auto;
 	overflow-y: hidden;
+	box-shadow: var(--shadow-blue-light);
 
 	.table {
 		width: 100%;
 		text-align: left;
-		color: var(--color-gray-dark);
+		background-color: #fff;
 	}
 
 	.row {
-		border: 1px solid var(--color-gray-state);
-
 		.cell {
-			padding: 8px;
+			font-size: 1rem;
+			color: var(--color-green-brand);
+			font-weight: 500;
+			padding: 16px;
+			vertical-align: middle;
+			line-height: 1;
 
 			&:first-child {
 				width: 40px;
@@ -22,11 +26,10 @@
 	}
 
 	.header {
-		background-color: var(--color-gray-light);
-		font-size: 18px;
+		border-bottom: 1px solid var(--color-gray-secondary);
 	}
 
 	.body {
-		font-size: 1rem;
+		font-size: 14px;
 	}
 }

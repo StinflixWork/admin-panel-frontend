@@ -22,9 +22,9 @@ export const DraggableRow = ({ row }: DraggableRowProps) => {
 	}
 
 	return (
-		<tr ref={setNodeRef} style={style} className='border-gray-state border border-solid'>
+		<tr ref={setNodeRef} style={style} className='border-gray-secondary border-b border-solid'>
 			{row.getVisibleCells().map(cell => (
-				<td key={cell.id} className='p-2 first:w-10'>
+				<td key={cell.id} className='text-gray-dark px-4 py-3 align-middle leading-0 first:w-10'>
 					{flexRender(cell.column.columnDef.cell, cell.getContext())}
 				</td>
 			))}
